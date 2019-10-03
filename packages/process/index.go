@@ -50,6 +50,7 @@ type Process struct {
 	VSZ   utils.Value // uint		Виртуальный размер процесса
 }
 
+// GetStateName return Info by key for Process.STAT
 func GetStateName(symbol byte) string {
 	switch symbol {
 	case 'R':
@@ -122,6 +123,7 @@ func (p *Process) String() string {
 	return str
 }
 
+// GetRunningProcesses return all running processes in system
 func GetRunningProcesses() (map[uint]*Process, error) {
 	// var m map[uint]Process
 	var procs map[uint]*Process = make(map[uint]*Process)
@@ -149,6 +151,7 @@ func GetRunningProcesses() (map[uint]*Process, error) {
 	return procs, nil
 }
 
+// getProcessRunningStatus return status process in system by PID
 func getProcessRunningStatus(pid int) (*os.Process, error) {
 	proc, err := os.FindProcess(pid)
 	if err != nil { // Процесс не найден
@@ -168,6 +171,7 @@ func getProcessRunningStatus(pid int) (*os.Process, error) {
 	return nil, errors.New("process running but query operation not permitted!")
 }
 
+// ExecCommand exec any command and return result as string
 func ExecCommand(nameCommand string, argsCommand ...string) (string, error) {
 	cmd := exec.Command(nameCommand, argsCommand...)
 	var out bytes.Buffer
@@ -179,6 +183,7 @@ func ExecCommand(nameCommand string, argsCommand ...string) (string, error) {
 	return out.String(), nil
 }
 
+// getProcessByParams get struct Process by params
 // index  : -> 0,1       ,2  ,3   ,4   ,5  ,6  ,7  ,8          ,9   ,10,11  ,12   ,13 ,14 ,15  ,16 ,17  .
 // params : -> c,%mem=MEM,pid,pgid,ppid,psr,rss,sid,start=START,stat,sz,time,tpgid,tty,uid,user,vsz,cmd .
 func getProcessByParams(params []string) *Process {
@@ -207,7 +212,7 @@ func getProcessByParams(params []string) *Process {
 	return process
 }
 
-// ParseDataPS result from command ps -eo args...
+// ParseDataPS return result after parsing as [][]string from command ps -eo args...
 func ParseDataPS(str string, countParams uint) [][]string {
 	var lines []string = strings.Split(str, "\n")
 	var funcResult [][]string = make([][]string, 0)
@@ -244,6 +249,7 @@ func ParseDataPS(str string, countParams uint) [][]string {
 	return funcResult
 }
 
+// GetProcessInfo return Process by PID
 func GetProcessInfo(pid uint) (*Process, error) {
 	var proc *Process = new(Process)
 	var command string = "ps -p " + strconv.Itoa(int(pid)) + " -o c,%mem=MEM,pid,pgid,ppid,psr,rss,sid,start=START,stat,sz,time,tpgid,tty,uid,user,vsz,cmd"
