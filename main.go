@@ -13,6 +13,9 @@ func main() {
 	// 	os.Exit(0)
 	// }
 	infoProcess, _ := proc.GetProcessInfo(uint(os.Getpid()))
-
-	fmt.Printf(infoProcess.ToString())
+	allProcesses, _ := proc.GetRunningProcesses()
+	fmt.Println(infoProcess)
+	for k := range allProcesses {
+		fmt.Println("PID: ", k, "Value: ", allProcesses[k])
+	}
 }
