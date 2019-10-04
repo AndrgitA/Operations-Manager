@@ -4,11 +4,9 @@ import (
 	"bytes"
 	"errors"
 	"fmt"
-	"os"
 	"os/exec"
 	"strconv"
 	"strings"
-	"syscall"
 
 	utils "../utils"
 )
@@ -149,26 +147,6 @@ func GetRunningProcesses() (map[uint]*Process, error) {
 		}
 	}
 	return procs, nil
-}
-
-// getProcessRunningStatus return status process in system by PID
-func getProcessRunningStatus(pid int) (*os.Process, error) {
-	proc, err := os.FindProcess(pid)
-	if err != nil { // Процесс не найден
-		return nil, err
-	}
-
-	err = proc.Signal(syscall.Signal(0))
-	if err == nil {
-		return proc, nil
-	}
-	GetRunningProcesses()
-	if err == syscall.ESRCH {
-		return nil, errors.New("Process not running")
-	}
-
-	// default
-	return nil, errors.New("process running but query operation not permitted!")
 }
 
 // ExecCommand exec any command and return result as string

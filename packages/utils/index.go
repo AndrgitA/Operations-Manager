@@ -33,7 +33,7 @@ type Value struct {
 	Null  bool
 }
 
-func (v *Value) ToString() string {
+func (v *Value) String() string {
 	return fmt.Sprintf("%s", v.Value)
 }
 
