@@ -14,23 +14,23 @@ import (
 // DB struct for work with DB Postgresql
 type DB struct {
 	db       *sql.DB
-	User     string
+	user     string
 	password string
-	Name     string
+	name     string
 }
 
 // NewDB create new Struct DB without db
 func NewDB(user, password, name string) *DB {
 	return &DB{
 		db:       nil,
-		User:     user,
+		user:     user,
 		password: password,
-		Name:     name}
+		name:     name}
 }
 
 // Connect method connect to db
 func (db *DB) Connect() error {
-	var dbInfo string = fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable", db.User, db.password, db.Name)
+	var dbInfo string = fmt.Sprintf("user=%s password=%s dbname=%s sslmode=disable", db.user, db.password, db.name)
 	d, err := sql.Open("postgres", dbInfo)
 	if err != nil {
 		return err

@@ -4,6 +4,7 @@ import (
 	"fmt"
 
 	dbm "./packages/db"
+	serv "./packages/server"
 )
 
 func main() {
@@ -76,6 +77,11 @@ func main() {
 		return
 	}
 
+	server := serv.CreateServer("", 8080)
+	err = server.Start(db)
+	if err != nil {
+		fmt.Println("ERROR START SERVER: ", err)
+	}
 	err = db.Close()
 	if err != nil {
 		fmt.Println("ERROR CLOSE DB: ", err)
