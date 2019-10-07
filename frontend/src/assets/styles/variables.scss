@@ -1,0 +1,62 @@
+//  colors
+$white: #FFFFFF;
+
+$black: #1A1A1A; 
+$black-highlight: #333333;
+$black-dark: #000000;
+
+$grey2: #FAFAFA;
+$grey5: #F2F2F2;
+$grey10: #E5E5E5;
+$grey33: #ABABAB;
+$grey44: #888B90;
+$grey50: #808080;
+$grey-dark: #89898F;
+
+$red: #D94436;
+
+$green: #32A64F;
+$green-highlight: #3EB25B;
+$green-dark: #1F993D;
+
+$blue: #0066CC;
+$blue-light: #E5F2FF;
+$blue-highlight: #1470CC;
+$blue-dark: #1262B2;
+
+$cyan-highlight: #00AAFF;
+$orange: #FFBA59;
+
+$warning_color: #D17E00;
+
+$colors: (
+    "white": $white,
+    "black": $black,
+    "black-highlight": $black-highlight,
+    "black-dark": $black-dark,
+    "grey2": $grey2,
+    "grey5": $grey5,
+    "grey10": $grey10,
+    "grey33": $grey33,
+    "grey44": $grey44,
+    "grey50": $grey50,
+    "grey-dark": $grey-dark,
+    "red": $red,
+    "green": $green,
+    "green-highlight": $green-highlight,
+    "green-dark": $green-dark,
+    "blue": $blue,
+    "blue-light": $blue-light,
+    "blue-highlight": $blue-highlight,
+    "blue-dark": $blue-dark,
+    "cyan-highlight": $cyan-highlight,
+    "orange": $orange,
+    "warning": $warning_color
+);
+
+$global-container-width: 1300px;
+$container-width: 1240px;
+$container-max-width: 1240px;
+
+$line-height: 20px;
+$row_margin: 20px;

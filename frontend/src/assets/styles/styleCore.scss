@@ -1,0 +1,315 @@
+@import '~styles/variables.scss';
+
+@at-root {
+    @-ms-viewport {
+        width: device-width;
+    }
+}
+
+html {
+    box-sizing: border-box;
+    -ms-overflow-style: scrollbar;
+    padding: 0;
+    border: 0;
+    margin: 0;
+}
+
+.panel-container {
+    position: relative;
+    max-width: $container-max-width;
+    width: $container-width;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.events-none {
+    pointer-events: none;
+}
+
+.events-auto {
+    pointer-events: auto;
+}
+
+$flex-state: (
+    'start': flex-start,
+    'end': flex-end,
+    'center': center,
+    'between': space-between,
+    'around': space-around,
+    'stretch': stretch
+);
+
+@each $name, $state in $flex-state {
+    .flex-#{ $name } {
+        display: flex;
+        flex-direction: row;
+        justify-content: $state;
+        align-items: $state;
+    }
+    @each $name_inner, $state_inner in $flex-state {
+        .flex-#{ $name }-#{ $name_inner } {
+            display: flex;
+            flex-direction: row;
+            justify-content: $state;
+            align-items: $state_inner;
+        }
+    }
+}
+
+.flex {
+    display: flex;
+}
+.flex-inline {
+    display: inline-flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+//TODO: add cursors class @each
+$cursors: ( pointer, move, default );
+
+@each $cursor in $cursors {
+    .cursor-#{ $cursor } {
+        cursor: $cursor;
+    }
+}
+
+.btn {
+    cursor: pointer;
+    outline: none;
+    &:active {
+        box-shadow: none;
+    }
+}
+
+.btn_text {
+    cursor: pointer;
+}
+
+
+
+.btn_block {
+    @extend .flex-center-center;
+    cursor: pointer;
+    &.disabled {
+        cursor: default;
+    }
+}
+
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+input {
+    outline: none;
+    border: none;
+}
+
+
+.limited-text-line {
+    display: block;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+
+.block {
+    display: block;
+}
+
+
+.break-all-block {
+    word-break: break-all;
+    display: block;
+    overflow-y: hidden;
+    overflow-x: hidden;
+}
+
+.break-block {
+    display: block;
+    overflow-y: hidden;
+    overflow-x: hidden;
+    white-space: normal;
+}
+
+$inline-align: (
+    "top": top,
+    "text-top": text-top,
+    "middle": middle,
+    "bottom": bottom,
+    "text-bottom": text-bottom
+);
+
+@each $name, $align in $inline-align {
+    .inline-block-#{ $name } {
+        display: inline-block;
+        vertical-align: $align;
+    }
+}
+
+.inline-block {
+    display: inline-block;
+    vertical-align: top;
+}
+
+
+.error {
+    color: $red !important;
+}
+
+.warning {
+    color: $warning_color !important;
+}
+
+img {
+    object-fit: cover;
+}
+
+.back-img {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.text-center {
+    text-align: center;
+}
+
+$tags: (body, a, p, span, label, h1, h2, h3 ,h4 ,h5, h6, div, textarea, input);
+
+@each $tag in $tags {
+    @each $key, $color in $colors {
+        #{ $tag }.#{ $key } {
+            color: $color;
+        }
+        #{ $tag }.back_#{ $key } {
+            background-color: $color;
+        }
+    }
+}
+
+@for $i from 1 through 5 {
+    .m-row-#{ $i } {
+        margin-bottom: $i * $row_margin;
+    }
+    .m-#{ $i * 5 } {
+        margin-bottom: $i * 5px;
+    }
+    .mh-#{ $i * 10 } {
+        max-height: $i * 10px;
+    }
+}
+
+.m-space {
+    padding-right: 0.333em;
+}
+
+.body-fixed {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+$overflows: ( scroll, auto, hidden );
+@each $overX in $overflows {
+    .overflow-#{ $overX } {
+        overflow-x: $overX;
+        overflow-y: auto;
+    }
+    @each $overY in $overflows {
+        .overflow-#{ $overX }-#{ $overY } {
+            overflow-x: $overX;
+            overflow-y: $overY;
+        }
+    }
+}
+
+.pre-wrap {
+    white-space: pre-wrap;
+}
+.pre-line {
+    white-space: pre-line;
+}
+.nowrap {
+    white-space: nowrap;
+}
+
+.break-word {
+    word-break: break-word;
+}
+
+.text-overflow-clip {
+    text-overflow: clip;
+    -ms-text-overflow: clip;
+    -o-text-overflow: clip;
+}
+
+.text-overflow-ellipsis {
+    text-overflow: ellipsis;
+    -ms-text-overflow: ellipsis;
+    -o-text-overflow: ellipsis;
+}
+
+
+.hide {
+    display: none;
+}
+
+.hidden {
+    visibility: hidden;
+}
+.visible {
+    visibility: visible;
+}
+
+.relative {
+    position: relative;
+}
+
+.height-100 {
+    height: 100%;
+}
+
+.width-100 {
+    width: 100%;
+}
+
+.width-max-limit {
+    width: 100%;
+    max-width: $container-max-width;
+}
+.height-window {
+    height: 100vh;
+}
+
+.width-window {
+    width: 100%;
+    min-width: 100vw;
+}
+
+html, body, .scroll-container {
+    margin-right: calc(100% - 100vw);
+    // width: calc(100% + calc(100vw - 100%))
+
+    // width: calc(100% + calc(100vw - 100%));
+}
+
+$user_selects: (none, text, all);
+@each $select in $user_selects {
+    .user-select-#{ $select } {
+        user-select: $select;
+    }
+}

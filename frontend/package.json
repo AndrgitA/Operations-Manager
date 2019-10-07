@@ -1,0 +1,65 @@
+{
+  "name": "frontend",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build --modern",
+    "build:local": "vue-cli-service build --modern --mode production_local",
+    "build:report": "vue-cli-service build --modern --report && chromium-browser ./dist/report.html",
+    "lint": "vue-cli-service lint",
+    "view:local": "serve -s dist -l 8080"
+  },
+  "dependencies": {
+    "axios": "^0.19.0",
+    "core-js": "^2.6.5",
+    "element-ui": "^2.12.0",
+    "pug": "^2.0.4",
+    "vue": "^2.6.10",
+    "vue-cookie": "^1.1.4",
+    "vue-i18n": "^8.14.1",
+    "vue-router": "^3.0.3",
+    "vue-svg-loader": "^0.12.0",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.6.2",
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-plugin-eslint": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "autoprefixer": "^9.6.4",
+    "babel-eslint": "^10.0.1",
+    "babel-plugin-component": "^1.1.1",
+    "eslint": "^5.16.0",
+    "eslint-plugin-vue": "^5.0.0",
+    "node-sass": "^4.9.0",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^7.1.0",
+    "serve": "^11.2.0",
+    "style-resources-loader": "^1.2.1",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {},
+    "parserOptions": {
+      "parser": "babel-eslint"
+    }
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}

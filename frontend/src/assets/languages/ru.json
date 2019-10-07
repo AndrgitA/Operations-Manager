@@ -1,0 +1,102 @@
+{
+    "messages": {
+        "$buttons": {
+        },
+        "$common": {
+            "no": "Нет",
+            "no_data": "Нет данных",
+            "none": "Пусто",
+            "nothing_found": "Ничего не найдено",
+            "week_days": {
+                "friday": "Пятница",
+                "monday": "Понедельник",
+                "saturday": "Суббота",
+                "sunday": "Воскресенье",
+                "thursday": "Четверг",
+                "tuesday": "Вторник",
+                "wednesday": "Среда"
+            },
+            "yes": "Да"
+        },
+        "$controls": {
+        },
+        "$date": {
+            "ago": "Назад",
+            "day": "День",
+            "days": "Дней",
+            "h": "ч",
+            "m": "м",
+            "never": "Никогда",
+            "today": "Сегодня",
+            "s": "с"
+        },
+        "$dropdown": {
+        },
+        "$fields": {
+        },
+        "$login": {
+            "login": "Login",
+            "panel": "panel",
+            "title_login": "Involvis"
+        },
+        "$modals": {
+            "message_box": {
+                "cannot_undone": "Данное действие нельзя будет отменить",
+                "question_leave": "Вы уверены?",
+                "lose_unsaved_data": "Вы потеряете все несохраненные данные"
+            }
+        },
+        "$menu": {
+            "logout": "Выйти"
+        },
+        "$month": {
+            "apr": "Апр",
+            "aug": "Авг",
+            "dec": "Дек",
+            "feb": "Фев",
+            "jan": "Янв",
+            "jul": "Июль",
+            "jun": "Июнь",
+            "mar": "Мар",
+            "nov": "Ноя",
+            "oct": "Окт",
+            "sep": "Сен",
+            "april": "Апреля",
+            "april_n": "Апрель",
+            "august": "Августа",
+            "august_n": "Август",
+            "december": "Декабря",
+            "december_n": "Декабрь",
+            "february": "Февраля",
+            "february_n": "Февраль",
+            "january": "Января",
+            "january_n": "Январь",
+            "july": "Июля",
+            "july_n": "Июль",
+            "june": "Июня",
+            "june_n": "Июнь",
+            "march": "Марта",
+            "march_n": "Март",
+            "may": "Мая",
+            "may_n": "Май",
+            "november": "Ноября",
+            "november_n": "Ноябрь",
+            "october": "Октября",
+            "october_n": "Октябрь",
+            "september": "Сентября",
+            "september_n": "Сентябрь"
+        },
+        "$notifications": {
+            "download_size_exceeds": "Размер загружаемого файла превышает",
+            "download_size_exceeds_s": "Размер некоторых загружаемых файлов превышает",
+            "fill_all_fields": "Fill in all the fields",
+            "login_failed": "Login failed. Please try again",
+            "max_number_files": "Количество файлов для загрузки превышает",
+            "welcome": "Welcome!"
+        },
+        "$sections": {
+        },
+        "$title_material": {
+        }
+    }
+}

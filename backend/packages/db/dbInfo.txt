@@ -1,0 +1,6 @@
+postgresql:
+db: {
+	user: manager,
+	password: manager94go,
+	namedb: operations_manager_app
+}

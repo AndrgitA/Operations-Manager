@@ -2,20 +2,9 @@ package main
 
 import (
 	"fmt"
-	"time"
 
-	proc "./packages/process"
+	dbm "./packages/db"
 )
-
-func Timeout(f func(), t time.Duration) {
-	c := make(chan bool, 1)
-	go func() {
-		time.Sleep(t)
-		c <- true
-	}()
-	<-c
-	f()
-}
 
 func main() {
 	// infoProcess, _ := proc.GetProcessInfo(uint(os.Getpid()))
@@ -66,19 +55,33 @@ func main() {
 	// out, _ := ioutil.ReadAll(r)
 	// r.Close()
 	// fmt.Println(string(out))
-	var msg chan string = make(chan string, 1)
-	if cmdProc, err := proc.StartProcess(&msg, "ping", "-c 10", "www.google.com"); err == nil {
-		// if cmdProc, err := proc.StartProcess(&msg, "watch", " ls", "-l"); err == nil {
-		fmt.Println(cmdProc)
-		// go func(m *chan string) {
-		for {
-			s := <-msg
-			fmt.Println(s)
-			if s == "end" {
-				break
-			}
-		}
-		// }(&msg)
+	// var msg chan string = make(chan string, 1)
+	// if cmdProc, err := proc.StartProcess(&msg, "bash", "./src/ProcessPing.sh"); err == nil {
+	// 	// if cmdProc, err := proc.StartProcess(&msg, "watch", " ls", "-l"); err == nil {
+	// 	fmt.Println(cmdProc)
+	// 	// go func(m *chan string) {
+	// 	for {
+	// 		s := <-msg
+	// 		// fmt.Println(s)
+	// 		if s == "%end%" {
+	// 			break
+	// 		}
+	// 	}
+	// 	// }(&msg)
+	// }
+	db := dbm.NewDB("manager", "manager94go", "operations_manager_app")
+	err := db.Connect()
+	if err != nil {
+		fmt.Println("ERROR CONNECT: ", err)
+		return
 	}
+
+	err = db.Close()
+	if err != nil {
+		fmt.Println("ERROR CLOSE DB: ", err)
+		return
+	}
+
+	// result, err := db.Exec("insert into Users (email, password, role) values ($1, $2, $3)", "admin@panel.com", "111", "ADMIN")
 
 }

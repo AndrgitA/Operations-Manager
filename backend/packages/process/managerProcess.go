@@ -1,9 +1,11 @@
 package proc
 
 import (
+	"bufio"
 	"bytes"
 	"errors"
 	"fmt"
+	"io"
 	"os"
 	"os/exec"
 	"syscall"
@@ -32,25 +34,43 @@ func GetProcessStatus(pid int) (*os.Process, error) {
 
 func pingMessage(pingCmd *exec.Cmd, pingMsgChan *chan string) {
 	var flagEnd bool = false
-	var i int
+	var iterations int
 	for !flagEnd {
 		time.Sleep(time.Second * 1)
 		if pingCmd == nil {
-			*pingMsgChan <- "gg"
+			*pingMsgChan <- "%none%"
 			flagEnd = true
 		} else {
 			x, _ := GetProcessStatus(pingCmd.Process.Pid)
 			flagEnd = x == nil
 			// *pingMsgChan <- strconv.Itoa(i)
-			var b []byte
-			pingCmd.Stdout.Write(b) // TODO: Need set stdout data and clear this Writer
-			fmt.Println(b, pingCmd.Stdout)
-			*pingMsgChan <- "123"
+			read := bufio.NewReader(pingCmd.Stdout.(io.Reader))
+			var lines []string = make([]string, 0)
+			for {
+				// for j := 0; j < iterations; j++ {
+				// 	read.ReadString('\n')
+				// }
+				if line, err := read.ReadString('\n'); err == nil {
+					if len(line) > 70 {
+						lines = append(lines, line)
+					}
+					// fmt.Println(line)
+				} else {
+					// fmt.Println(err)
+					break
+				}
+			}
+			if len(lines) > 0 {
+				// *pingMsgChan <- strings.Join(lines, "")
+				*pingMsgChan <- lines[len(lines)-1]
+			} else {
+				*pingMsgChan <- "%none%"
+			}
+			iterations += 2
 		}
-		i++
 		// *pingMsgChan <- b.String()
 	}
-	*pingMsgChan <- "end"
+	*pingMsgChan <- "%end%"
 	// *pingMsgChan = chan string(nil)
 }
 
