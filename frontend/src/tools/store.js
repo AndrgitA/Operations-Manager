@@ -17,9 +17,9 @@ const store = new Vuex.Store({
         notifications: [],                                          // container for notifications
         // TODO: update user struct for this project
         user: {
-            given_name: '',
-            family_name: '',
-            email: ''
+            login: '',
+            role: '',
+            id: ''
         },
         axios: axios
     },
@@ -62,7 +62,7 @@ const store = new Vuex.Store({
             console.log("[store.js]: Logout: ", router);
             state.isAuth = false;
             delete state.axios.defaults.headers.common['Token'];
-            VueCookie.delete('wase-panel__token')
+            VueCookie.delete('omanager-panel__token')
 
             console.log("[store.js]: Router: ", router);
             if (!!router && router.history.current.path !== '/login') {

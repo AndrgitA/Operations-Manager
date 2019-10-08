@@ -33,11 +33,13 @@
         "$dropdown": {
         },
         "$fields": {
+            "login": "Логин",
+            "password": "Пароль"
         },
         "$login": {
             "login": "Login",
             "panel": "panel",
-            "title_login": "Involvis"
+            "title_login": "Operations Manager"
         },
         "$modals": {
             "message_box": {

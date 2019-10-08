@@ -3,53 +3,87 @@ package serv
 import (
 	"log"
 	"net/http"
+	"os"
+	"path/filepath"
 	"strconv"
+	"time"
 
 	dbm "../db"
+	api "./api"
+	mux "github.com/gorilla/mux"
 )
+
+// spaHandler implements the http.Handler interface
+type spaHandler struct {
+	staticPath string
+	indexPath  string
+}
 
 // Server struct server meta
 type Server struct {
-	host string
-	port uint
-	mux  *http.ServeMux
-	db   *dbm.DB
+	server *http.Server
+	db     *dbm.DB
+	spa    *spaHandler
+}
+
+func (h *spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
+	log.Println("IN SPA HANDLER")
+	// get absolute path to prevent directory traversal
+	path, err := filepath.Abs(r.URL.Path)
+	log.Println(path)
+	if err != nil {
+		// if failed to get the absolute path respond with a 400 bad request and stop
+		http.Error(w, err.Error(), http.StatusBadRequest)
+		return
+	}
+
+	// prepend the path with the path to the static directory
+	path = filepath.Join(h.staticPath, path)
+
+	log.Println(path)
+	// check whether a file exists at the given path
+	_, err = os.Stat(path)
+	if os.IsNotExist(err) {
+		// file does not exist, server index.html
+		http.ServeFile(w, r, filepath.Join(h.staticPath, h.indexPath))
+		return
+	} else if err != nil {
+		// if we got an error stating the file, return a 500 internal server  error and stop
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+	// otherwise, use http.FileServer to serve the static dir
+	http.FileServer(http.Dir(h.staticPath)).ServeHTTP(w, r)
 }
 
 // CreateServer create server
-func CreateServer(host string, port uint) *Server {
+func CreateServer(host string, port uint, db *dbm.DB) *Server {
+	var address string = host + ":" + strconv.Itoa(int(port))
+	router := mux.NewRouter()
+	server := &http.Server{
+		Handler:      router,
+		Addr:         address,
+		WriteTimeout: 15 * time.Second,
+		ReadTimeout:  15 * time.Second}
+
+	spa := &spaHandler{staticPath: "../frontend/dist", indexPath: "../frontend/dist/index.html"}
 	return &Server{
-		host: host,
-		port: port,
-		mux:  http.NewServeMux(),
-		db:   nil}
-}
-
-// authMiddleWare check authorization user
-func authMiddleWare(next http.Handler) http.HandlerFunc {
-	log.Println("Executing middleWare")
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path != "/" {
-			w.WriteHeader(404)
-			w.Write([]byte("not found"))
-			return
-		}
-		next.ServeHTTP(w, r)
-	})
-}
-
-func home(w http.ResponseWriter, r *http.Request) {
-	log.Println("Executing homeHandle")
-	w.Write([]byte("OK ANDRGIT, THIS IS HOME RESPONSE"))
+		server: server,
+		db:     db,
+		spa:    spa}
 }
 
 // Start run server
-func (server *Server) Start(db *dbm.DB) error {
-	server.db = db
-	var address string = server.host + ":" + strconv.Itoa(int(server.port))
-	homeHandle := http.HandlerFunc(home)
-	server.mux.HandleFunc("/", authMiddleWare(homeHandle))
-	err := http.ListenAndServe(address, server.mux)
+func (s *Server) Start() error {
+	var router *mux.Router = s.server.Handler.(*mux.Router)
+
+	//register all api
+	api.InitRouter(router, s.db)
+
+	// static files
+	router.PathPrefix("/").Handler(s.spa)
+
+	err := s.server.ListenAndServe()
 	if err != nil {
 		return err
 	}

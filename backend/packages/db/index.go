@@ -5,10 +5,12 @@ package dbm
 */
 import (
 	"database/sql"
+	"encoding/base64"
 	"fmt"
 
 	// pq package
 	_ "github.com/lib/pq"
+	"golang.org/x/crypto/bcrypt"
 )
 
 // DB struct for work with DB Postgresql
@@ -46,4 +48,13 @@ func (db *DB) Close() error {
 		return err
 	}
 	return nil
+}
+
+// GenerateToken generate token by string
+func GenerateToken(str string) string {
+	hash, err := bcrypt.GenerateFromPassword([]byte(str), bcrypt.DefaultCost)
+	if err != nil {
+		return ""
+	}
+	return base64.StdEncoding.EncodeToString(hash)
 }

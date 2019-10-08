@@ -114,7 +114,7 @@ Vue.use(DropdownItem);
 
 Vue.config.productionTip = false
 
-const token = VueCookie.get('involvis-panel__token');
+const token = VueCookie.get('omanager-panel__token');
 
 
 
@@ -142,7 +142,7 @@ function initApp(user = null) {
 }
 
 if (!!token) {                                              // init when have token key
-  console.log("[main.js]: wase-panel__token: ", token);
+  console.log("[main.js]: omanager-panel__token: ", token);
   initUser(store.state.axios, token, initApp);
 } else {                                                    // init clear app without data
   console.log("[main.js]: have no token");

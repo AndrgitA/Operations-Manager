@@ -77,8 +77,8 @@ func main() {
 		return
 	}
 
-	server := serv.CreateServer("", 8080)
-	err = server.Start(db)
+	server := serv.CreateServer("localhost", 8888, db)
+	err = server.Start()
 	if err != nil {
 		fmt.Println("ERROR START SERVER: ", err)
 	}

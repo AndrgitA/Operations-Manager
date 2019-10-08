@@ -1,14 +1,14 @@
 import axios from 'axios';
 
 // /api/v1/ // :TODO change later
-axios.defaults.baseURL = `${ process.env.VUE_APP_SERVER_ADDRESS }/api/panel/v${ process.env.VUE_APP_VERSION_API }`;
+axios.defaults.baseURL = `${ process.env.VUE_APP_SERVER_ADDRESS }/api/v${ process.env.VUE_APP_VERSION_API }`;
 
 // axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 axios.defaults.headers.common['Content-Type'] = 'application/json';
 axios.defaults.headers.common['Access-Control-Allow-Credentials'] = 'true';
 axios.defaults.headers.common['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Set-Cookie, *';
 axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH';
-axios.defaults.headers.common['Access-Control-Allow-Origin'] = 'http://localhost:8080';
+axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
 
 axios.interceptors.request.use(request => {
     if (request.params === null || typeof request.params !== 'object') {

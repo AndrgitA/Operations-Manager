@@ -4,8 +4,8 @@ div.component-login
         span.medium.font-title.black {{ $t('$login.title_login') }}
         span.medium.font-title.name-panel.grey33.m-row-2 {{ $t('$login.panel') }}
         div.blank-login-form
-            span.regular.font-body.field-title {{ $t('$fields.email') }}
-            input.blank-login-input.m-10(v-model="email" @keyup="keyUp")
+            span.regular.font-body.field-title {{ $t('$fields.login') }}
+            input.blank-login-input.m-10(v-model="login" @keyup="keyUp")
             div.regular.font-body.field-title {{ $t('$fields.password') }}
             input.blank-login-input.m-row-2(v-model="pass" @keyup="keyUp" type="password")
             button.btn-black.blank-login-button(@click="onButton") {{ $t('$login.login') }}
@@ -19,7 +19,7 @@ export default {
     data() {
         return {
             pass: '',
-            email: '',
+            login: '',
         }
     },
     methods: {
@@ -31,12 +31,12 @@ export default {
         },
         setToken(v) {
             let user = {
-                given_name: v.given_name,
-                family_name: v.family_name,
-                email: v.email
+                login: v.login,
+                role: v.role,
+                id: v.id
             };
 
-            this.$cookie.set('wase-panel__token', v.token);
+            this.$cookie.set('omanager-panel__token', v.token);
             this.$store.commit('setUserData', user);
             this.$store.commit('Login', { token: v.token, router: this.$router });
             let mes = { text: this.$t('$notifications.welcome'), color: 'black' };
@@ -44,16 +44,16 @@ export default {
             setTimeout(() => { this.$store.commit('addNotification', mes); }, 500);
         },
         onButton() {
-            if (this.pass != '' && /^[a-zA-Z]\w*@[a-z]\w*.[a-zA-Z]+$/.test(this.email)){
-                // this.$store.state.axios.post('/login', { email: this.email, password: this.pass }).then(response => {
-                //     console.log('[LoginComponent.vue]: onButton(response): ', response);
-                //     this.setToken(response.data);
-                // }).catch(error => {
-                //     console.log('[LoginComponent.vue]: onButton(error): ', error, error.response);
-                //     if (error.response.status === 401){
-                //         this.$store.commit('addNotification', { text: this.$t('$notifications.login_failed'), color: 'white' });
-                //     }
-                // });
+            if (this.pass != '' /*&& /^[a-zA-Z]\w*@[a-z]\w*.[a-zA-Z]+$/.test(this.login)*/){
+                this.$store.state.axios.post('/login', { login: this.login, password: this.pass }).then(response => {
+                    console.log('[LoginComponent.vue]: onButton(response): ', response);
+                    this.setToken(response.data);
+                }).catch(error => {
+                    console.log('[LoginComponent.vue]: onButton(error): ', error, error.response);
+                    if (error.response.status === 401){
+                        this.$store.commit('addNotification', { text: this.$t('$notifications.login_failed'), color: 'white' });
+                    }
+                });
             } else {
                 this.$store.commit('addNotification', { text: this.$t('$notifications.fill_all_fields'), color: 'white' });
             }

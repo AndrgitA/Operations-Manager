@@ -9,9 +9,9 @@ const initUser = function(http, token, callbackFunction) {
         console.log('[initMain.js]: initUser(response): ', response);
         let data = response.data;
         let tmp = {
-            given_name: data.given_name,
-            family_name: data.family_name,
-            email: data.email
+            login: data.login,
+            role: data.role,
+            id: data.id
         };
         callbackFunction(tmp);
     }).catch(error => {
