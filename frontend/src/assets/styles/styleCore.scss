@@ -313,3 +313,29 @@ $user_selects: (none, text, all);
         user-select: $select;
     }
 }
+
+*[panel__tooltip] {
+    position: relative;
+    &::before {
+        content: attr(panel__tooltip); /* Выводим текст */
+        position: absolute; /* Абсолютное позиционирование */
+        width: 300px; /* Ширина подсказки */
+        left: 0; top: 0; /* Положение подсказки */
+        background: $white; /* Синий цвет фона $cyan-5 */ 
+        color: $cyan-30; /* Цвет текста */
+        padding: 0.5em; /* Поля вокруг текста */
+        box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3); /* Параметры тени */
+        pointer-events: none; /* Подсказка */
+        opacity: 0; /* Подсказка невидима */
+        transition: .5s; /* Время появления подсказки */
+        z-index: 20;
+        word-break: break-all;
+    }
+    &:hover {
+        &::before {
+            z-index: 20;
+            opacity: 1; /* Показываем подсказку */
+            top: 2em; /* Положение подсказки */
+        }
+    }
+}

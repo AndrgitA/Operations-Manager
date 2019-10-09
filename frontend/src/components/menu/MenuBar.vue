@@ -1,14 +1,14 @@
 <template lang="pug">
-div.menu-bar.back_black-dark
+div.menu-bar.back_cyan-dark
     div.panel-container
         div.menu-bar__bar.flex-start
             div.menu-bar__bar-start
                 span.medium.font-title.white {{ $t('$menu.name_panel') }}
             div.menu-bar__bar-center.ml-30
                 a.inline-block(v-for="item in pages")
-                    router-link.regular.font-body.item-menu.grey50(v-if="item.link !== ''" :to="item.link" :class="item.class || ''") {{ item.name }}
+                    router-link.regular.font-body.item-menu.cyan-50(v-if="item.link !== ''" :to="item.link" :class="item.class || ''") {{ item.name }}
             div.menu-bar__bar-end
-                dropdown-menu.menu-bar_bar-end-dropdown.grey50(
+                dropdown-menu.menu-bar_bar-end-dropdown.cyan-50(
                     :dropdown_title="fullName"
                     :items="settings"
                     @onChange="onChange"
@@ -29,17 +29,16 @@ export default {
             pages: [],
             settings: [ this.$t('$menu.logout') ],
             all_menu: {
-                PHOTOSESSIONS: { name: this.$t('$menu.photosessions'), link: '/photosessions' },
-                FEED: { name: this.$t('$menu.feed'), link: '/feed' },
-                STORIES: { name: this.$t('$menu.stories'), link: '/stories' },
-                PROMOCODES: { name: this.$t('$menu.promocodes'), link: '/promocodes' }
+                MONITORING: { name: this.$t('$menu.monitoring'), link: '/monitoring' },
+                PHOTOSESSIONS: { name: this.$t('$menu.processes'), link: '/processes' },
+                FEED: { name: this.$t('$menu.scripts'), link: '/scripts' },
             }
         };
     },
     computed: {
         fullName() {
             let user = this.$store.state.user;
-            return `${ user.family_name } ${ user.given_name }`;
+            return `${ user.login }`;
         }
     },
     created() {

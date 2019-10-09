@@ -26,6 +26,19 @@
     }
 }
 
+.btn-cyan {
+    cursor: pointer;
+    background-color: $cyan-5;
+    color: $cyan-30;
+    border: 1px solid $cyan-10;
+    &:hover {
+        background-color: $cyan-10;
+    }
+    &:active {
+        background-color: darken($cyan-10, 3);
+    }
+}
+
 .btn-green {
     cursor: pointer;
     background-color: $green;

@@ -26,24 +26,6 @@ func Unmarshel(r io.Reader, v interface{}) error {
 	return json.NewDecoder(r).Decode(v)
 }
 
-// authMiddleWare check authorization user
-func authMiddleWare(next http.Handler) http.HandlerFunc {
-	log.Println("Executing middleWare")
-	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		if r.URL.Path != "/" {
-			w.WriteHeader(404)
-			w.Write([]byte("not found"))
-			return
-		}
-		next.ServeHTTP(w, r)
-	})
-}
-
-func home(w http.ResponseWriter, r *http.Request) {
-	log.Println("Executing homeHandle")
-	w.Write([]byte("OK ANDRGIT, THIS IS HOME RESPONSE"))
-}
-
 func setupResponse(w *http.ResponseWriter, req *http.Request) {
 	(*w).Header().Set("Content-Type", "application/json")
 	(*w).Header().Set("Access-Control-Allow-Credentials", "true")
@@ -52,6 +34,23 @@ func setupResponse(w *http.ResponseWriter, req *http.Request) {
 	(*w).Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Set-Cookie, *")
 }
 
+func verify(f func(http.ResponseWriter, *http.Request)) func(http.ResponseWriter, *http.Request) {
+	return func(w http.ResponseWriter, r *http.Request) {
+
+		log.Println(r.Method, r.URL.Path)
+		if r.Method == "OPTIONS" {
+			f(w, r)
+			return
+		}
+		_, err := db.GetUserByToken(r.Header.Get("Token"))
+		if err != nil {
+			setupResponse(&w, r)
+			http.Error(w, err.Error(), http.StatusUnauthorized)
+			return
+		}
+		f(w, r)
+	}
+}
 func InitRouter(router *mux.Router, DataBase *dbm.DB) error {
 	if router == nil {
 		return errors.New("Router is nil")
@@ -64,6 +63,11 @@ func InitRouter(router *mux.Router, DataBase *dbm.DB) error {
 	db = DataBase
 	router.HandleFunc("/api/v1/login", loginHandle)
 
+	// router.Use(authMiddleWare)
+	router.HandleFunc("/api/v1/processes", verify(processHandle))
+	router.HandleFunc("/api/v1/processes/{pid}", verify(processPidHandle))
+	router.HandleFunc("/api/v1/scripts", verify(scriptsHandle))
+	router.HandleFunc("/api/v1/scripts/{id}", verify(scriptHandle))
 	// homeHandle := http.HandlerFunc(home)
 	// router.HandleFunc("/", authMiddleWare(homeHandle))
 	return nil

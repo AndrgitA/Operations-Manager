@@ -91,6 +91,10 @@ export default {
             color: $white;
             background-color: $red;
         }
+        &.cyan-notification {
+            background-color: $cyan-dark;
+            color: $white;
+        }
     }
 }
 </style>

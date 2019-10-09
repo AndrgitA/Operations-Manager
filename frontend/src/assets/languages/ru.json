@@ -1,8 +1,11 @@
 {
     "messages": {
         "$buttons": {
+            "new": "Новый",
+            "start": "Запустить"
         },
         "$common": {
+            "all_users": "Все пользователи",
             "no": "Нет",
             "no_data": "Нет данных",
             "none": "Пусто",
@@ -31,9 +34,16 @@
             "s": "с"
         },
         "$dropdown": {
+            "exit": "Завершить процесс",
+            "interrupt": "Вызвать прерывание",
+            "kill": "Убить процесс",
+            "stop": "Остановить процесс"
         },
         "$fields": {
+            "attributes": "Атрибуты команды",
+            "cmd": "Комманда",
             "login": "Логин",
+            "new_public_process": "Новый процесс",
             "password": "Пароль"
         },
         "$login": {
@@ -49,7 +59,11 @@
             }
         },
         "$menu": {
-            "logout": "Выйти"
+            "logout": "Выйти",
+            "monitoring": "Мониторинг",
+            "name_panel": "Operations Manager",
+            "processes": "Процессы",
+            "scripts": "Скрипты"
         },
         "$month": {
             "apr": "Апр",
@@ -94,11 +108,31 @@
             "fill_all_fields": "Fill in all the fields",
             "login_failed": "Login failed. Please try again",
             "max_number_files": "Количество файлов для загрузки превышает",
+            "process_started": "Процесс успешно запущен",
+            "process_started_failed": "Запуск процесса неуспешен",
             "welcome": "Welcome!"
         },
         "$sections": {
         },
         "$title_material": {
+            "c": "C",
+            "cmd": "CMD",
+            "mem": "MEM",
+            "pid": "PID",
+            "pgid": "PGID",
+            "ppid": "PPID",
+            "psr": "PSR",
+            "rss": "RSS",
+            "sid": "SID",
+            "start": "Start",
+            "stat": "Stat",
+            "sz": "Size",
+            "time": "Time",
+            "tpgid": "TPGID",
+            "tty": "TTY",
+            "uid": "UID",
+            "vsz": "VSZ",
+            "user": "User"
         }
     }
 }

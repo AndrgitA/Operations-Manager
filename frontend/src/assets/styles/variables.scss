@@ -29,6 +29,21 @@ $orange: #FFBA59;
 
 $warning_color: #D17E00;
 
+
+
+
+$cyan-1: #cbf3ff91;
+$cyan-5: #a2d6e647;
+$cyan-10: #a2d6e6;
+$cyan-20:#60aac1;
+$cyan-30:#0c7da0;
+$cyan-50:#1e9e92;
+$cyan-55: #478598;
+$cyan-dark-linght: #22586d;
+$cyan-dark: #084456;
+
+
+
 $colors: (
     "white": $white,
     "black": $black,
@@ -51,7 +66,17 @@ $colors: (
     "blue-dark": $blue-dark,
     "cyan-highlight": $cyan-highlight,
     "orange": $orange,
-    "warning": $warning_color
+    "warning": $warning_color,
+
+    cyan-1: $cyan-1,
+    cyan-5: $cyan-5,
+    cyan-10: $cyan-10,
+    cyan-20: $cyan-20,
+    cyan-30: $cyan-30,
+    cyan-50: $cyan-50,
+    cyan-55: $cyan-55,
+    cyan-dark-linght: $cyan-dark-linght,
+    cyan-dark: $cyan-dark,
 );
 
 $global-container-width: 1300px;

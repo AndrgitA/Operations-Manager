@@ -1,6 +1,6 @@
 <template lang="pug">
 div.dropdown-menu
-    el-dropdown.grey50(trigger="click" @visible-change="dropdownHover = $event")
+    el-dropdown.cyan-50(trigger="click" @visible-change="dropdownHover = $event")
         div.regular.font-body.dropdown-menu__title(:class="{ 'white-item-menu': dropdownHover }") {{ dropdown_title }}
             chevron.dropdown-menu__chevron(:style="{ transform: `rotate(${ dropdownHover ? 180 : 0 }deg)` }")
         el-dropdown-menu.dropdown-menu__m-menu(slot="dropdown")
@@ -49,7 +49,7 @@ export default {
                 position: absolute;
                 right: 0;
                 .chevron-- {
-                    stroke: $grey50;
+                    stroke: $cyan-50;
                 }
             }
             

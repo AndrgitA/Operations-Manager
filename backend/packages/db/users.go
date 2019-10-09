@@ -4,7 +4,6 @@ import (
 	"crypto/md5"
 	"errors"
 	"fmt"
-	"log"
 	"time"
 )
 
@@ -32,17 +31,13 @@ func (db *DB) GetUser(login, password string) (*UserHttp, error) {
 	}
 	token := GenerateToken(login + time.Now().String())
 	result, err := db.db.Exec("insert into tokens (token, user_id) values($1, $2)", token, user.ID)
-	log.Println(result, err)
 	if err != nil {
 		return nil, err
 	}
-	log.Println(err)
 	c, err := result.RowsAffected()
-	log.Println(err, c)
 	if err != nil || c != 1 {
 		return nil, err
 	}
-	log.Println(err)
 	user.Token = token
 
 	return user, nil

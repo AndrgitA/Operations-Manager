@@ -27,33 +27,73 @@
     }
 }
 
-.material-promocode-layout {
+.material-process-layout {
     position: relative;
     width: 100%;
-    .pos0 {
-        width: 440px;
-        margin-left: 40px;
+    & .pos0 {
+        width: 100px;
+        margin-left: 10px;
     }
-    .pos1 {
-        width: 60px;
-        margin-left: 20px;
+    & .pos1 {
+        width: 25px;
+        margin-left: 10px;
     }
-    .pos2 {
-        width: 200px;
-        margin-left: 20px;
+    & .pos2 {
+        width: 40px;
+        margin-left: 10px;
     }
-    .pos3 {
-        width: 120px;
-        margin-left: 20px;
+    & .pos3, & .pos4, & .pos5,
+    & .pos7, & .pos8, & .pos13,
+    & .pos15 {
+        width: 65px;
+        margin-left: 10px;
     }
-    .pos4 {
-        width: 60px;
-        margin-left: 20px;
+    & .pos6 {
+        width: 30px;
+        margin-left: 10px;
     }
-    .pos5 {
-        width: 150px;
-        margin-left: 20px;
+    & .pos9, & .pos12 {
+        width: 70px;
+        margin-left: 10px;
     }
+    & .pos10 {
+        width: 35px;
+        margin-left: 10px;
+    }
+    & .pos14, & .pos17 {
+        width: 30px;
+        margin-left: 10px;
+    }
+    & .pos11, & .pos16 {
+        width: 75px;
+        margin-left: 10px;
+    }
+    
+    
+    // .pos0 {
+    //     width: 440px;
+    //     margin-left: 40px;
+    // }
+    // .pos1 {
+    //     width: 60px;
+    //     margin-left: 20px;
+    // }
+    // .pos2 {
+    //     width: 200px;
+    //     margin-left: 20px;
+    // }
+    // .pos3 {
+    //     width: 120px;
+    //     margin-left: 20px;
+    // }
+    // .pos4 {
+    //     width: 60px;
+    //     margin-left: 20px;
+    // }
+    // .pos5 {
+    //     width: 150px;
+    //     margin-left: 20px;
+    // }
 }
 // .material-application-layout {
 //     position: relative;

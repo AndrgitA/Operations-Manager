@@ -4,7 +4,6 @@ import (
 	"bufio"
 	"bytes"
 	"errors"
-	"fmt"
 	"io"
 	"os"
 	"os/exec"
@@ -12,7 +11,7 @@ import (
 	"time"
 )
 
-// getProcessRunningStatus return status process in system by PID
+// GetProcessRunningStatus return status process in system by PID
 func GetProcessStatus(pid int) (*os.Process, error) {
 	proc, err := os.FindProcess(pid)
 	if err != nil { // Процесс не найден
@@ -76,12 +75,14 @@ func pingMessage(pingCmd *exec.Cmd, pingMsgChan *chan string) {
 
 func StartProcess(msg *chan string, nameCommand string, argsCommand ...string) (pCmd *exec.Cmd, err error) {
 	var pRun chan bool = make(chan bool, 1)
-	var out bytes.Buffer
 	pCmd = exec.Command(nameCommand, argsCommand...)
-	pCmd.Stdout = &out
+	var out bytes.Buffer
+	if msg != nil {
+		pCmd.Stdout = &out
+	}
 
 	go func(fCmd *exec.Cmd, fRun *chan bool, fMsg *chan string) {
-		fmt.Println("IN LEVEL 0: ", fCmd, fCmd.ProcessState)
+		// fmt.Println("IN LEVEL 0: ", fCmd, fCmd.ProcessState)
 		if err := fCmd.Start(); err != nil {
 			*fRun <- false
 		}

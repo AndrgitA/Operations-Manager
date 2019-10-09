@@ -43,8 +43,8 @@ import {
   // CheckboxButton,
   // CheckboxGroup,
   // Switch,
-  // Select,          --off
-  // Option,          --off
+  Select,          
+  Option,          
   // OptionGroup,
   // Button,
   // ButtonGroup,
@@ -107,8 +107,8 @@ Vue.use(Dropdown);
 Vue.use(DropdownMenu);
 Vue.use(DropdownItem);
 // Vue.use(DatePicker);
-// Vue.use(Select);
-// Vue.use(Option);
+Vue.use(Select);
+Vue.use(Option);
 // Vue.use(Progress);
 
 

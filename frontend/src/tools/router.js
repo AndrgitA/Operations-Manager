@@ -2,6 +2,10 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 const Login = () => import(/* webpackChunkName: "pageLogin" */ '@/views/Login.vue');
+
+const Monitoring = () => import(/* webpackChunkName: "pageMonitoring" */ '@/views/Monitoring.vue');
+const Processes = () => import(/* webpackChunkName: "pageProcesses" */ '@/views/Processes.vue');
+const Scripts = () => import(/* webpackScripts: "pageScripts" */ '@/views/Scripts.vue');
 Vue.use(Router);
 const router = new Router ({
     mode: 'history',
@@ -30,6 +34,21 @@ const router = new Router ({
             component: Login
         },
         {
+            path: '/monitoring',
+            name: 'Monitoring',
+            component: Monitoring
+        },
+        {
+            path: '/processes',
+            name: 'Processes',
+            component: Processes
+        },
+        {
+            path: '/scripts',
+            name: 'Scripts',
+            component: Scripts
+        },
+        {
             path: '*',
             redirect: to => {
                 const { hash, params, query } = to;
@@ -56,7 +75,7 @@ const routerBeforeEach = function(store) {
         switch (to.path) {
             case '/login':
                 if (!!store.state.isAuth) {
-                    let pathTo = '/photosessions'; // TODO: change later to /modules
+                    let pathTo = '/processes'; // TODO: change later to /modules
                     next({ path: pathTo });
                 } else {
                     next();

@@ -55,3 +55,21 @@ type ProcessHttp struct {
 	USER  string `json:"user"`  //	Имя владельца процесса
 	VSZ   uint   `json:"vsz"`   //	Виртуальный размер процесса
 }
+
+type PostProcessHttp struct {
+	Signal string `json:"signal"`
+}
+
+type PostProcessesHttp struct {
+	CMD        string `json:"cmd"`
+	Attributes string `json:"attributes`
+}
+
+type ScriptHttp struct {
+	ID   int    `json:"id"`   //	Идентификатор скрипта в бд
+	Text string `json:"text"` // 	Логин пользователя
+}
+
+type PostScriptHttp struct {
+	Text string `json:"text"` // 	Логин пользователя
+}

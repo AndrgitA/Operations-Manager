@@ -1,5 +1,5 @@
 <template lang="pug">
-  div#app.scroll-container.overflow-hidden-hidden.back_grey5
+  div#app.scroll-container.overflow-hidden-hidden.back_cyan-1
     menu-bar(v-if="$route.path != '/login' && $route.path != '/'")
     router-view(:key="$store.state.flagUpdate")
     container-modals(

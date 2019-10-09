@@ -29,7 +29,7 @@ func loginHandle(w http.ResponseWriter, r *http.Request) {
 		}
 		user, err := db.GetUser(body.Login, body.Password)
 		if err != nil {
-			http.Error(w, err.Error(), http.StatusNotFound)
+			http.Error(w, err.Error(), http.StatusUnauthorized)
 			return
 		}
 		json.NewEncoder(w).Encode(user)

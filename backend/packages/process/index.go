@@ -8,6 +8,7 @@ import (
 	"strconv"
 	"strings"
 
+	dbm "../db"
 	utils "../utils"
 )
 
@@ -82,6 +83,29 @@ func GetStateName(symbol byte) string {
 	}
 }
 
+func (p *Process) ConvertToProcessHTTP() *dbm.ProcessHttp {
+	tmp := dbm.ProcessHttp{
+		C:       p.C.Value.(uint),
+		COMMAND: p.COMMAND.Value.(string),
+		MEM:     p.MEM.Value.(uint),
+		PID:     p.PID.Value.(uint),
+		PGID:    p.PGID.Value.(uint),
+		PPID:    p.PPID.Value.(uint),
+		PSR:     p.PSR.Value.(uint),
+		RSS:     p.RSS.Value.(uint),
+		SID:     p.SID.Value.(uint),
+		START:   p.START.Value.(string),
+		STAT:    p.STAT.Value.(string),
+		SZ:      p.SZ.Value.(uint),
+		TIME:    p.TIME.Value.(string),
+		TPGID:   p.TPGID.Value.(int),
+		TTY:     p.TTY.Value.(string),
+		UID:     p.UID.Value.(uint),
+		USER:    p.USER.Value.(string),
+		VSZ:     p.VSZ.Value.(uint)}
+	return &tmp
+}
+
 func (p *Process) String() string {
 	var strStat string = ""
 	var stat string = p.STAT.Value.(string)
@@ -122,13 +146,12 @@ func (p *Process) String() string {
 }
 
 // GetRunningProcesses return all running processes in system
-func GetRunningProcesses() (map[uint]*Process, error) {
+func GetRunningProcesses() ([]*Process, error) {
 	// var m map[uint]Process
-	var procs map[uint]*Process = make(map[uint]*Process)
+	var procs []*Process = make([]*Process, 0)
 	var proc *Process
 	var command string = "ps -eAo c,%mem=MEM,pid,pgid,ppid,psr,rss,sid,start=START,stat,sz,time,tpgid,tty,uid,user,vsz,cmd"
 	const countParams uint = 18
-	var key uint
 	// fmt.Println(command)
 
 	out, err := ExecCommand("bash", "-c", command)
@@ -142,8 +165,7 @@ func GetRunningProcesses() (map[uint]*Process, error) {
 	for i := 0; i < len(array); i++ {
 		proc = getProcessByParams(array[i])
 		if proc != nil {
-			key = proc.PID.Value.(uint)
-			procs[key] = proc
+			procs = append(procs, proc)
 		}
 	}
 	return procs, nil
@@ -218,7 +240,7 @@ func ParseDataPS(str string, countParams uint) [][]string {
 			if innerIndex == int(countParams) {
 				funcResult = append(funcResult, innerResultArray)
 			}
-			fmt.Println(lines[i], "\n", innerResultArray)
+			// fmt.Println(lines[i], "\n", innerResultArray)
 		}
 	}
 	if len(funcResult) == 0 {
