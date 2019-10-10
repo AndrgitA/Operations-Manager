@@ -29,7 +29,7 @@ export default {
             pages: [],
             settings: [ this.$t('$menu.logout') ],
             all_menu: {
-                MONITORING: { name: this.$t('$menu.monitoring'), link: '/monitoring' },
+                INFORMATION: { name: this.$t('$menu.information'), link: '/information' },
                 PHOTOSESSIONS: { name: this.$t('$menu.processes'), link: '/processes' },
                 FEED: { name: this.$t('$menu.scripts'), link: '/scripts' },
             }

@@ -1,6 +1,7 @@
 package serv
 
 import (
+	"fmt"
 	"net/http"
 	"os"
 	"path/filepath"
@@ -78,6 +79,7 @@ func (s *Server) Start() error {
 	// static files
 	router.PathPrefix("/").Handler(s.spa)
 
+	fmt.Printf("Connect to : http://%s\n", s.server.Addr)
 	err := s.server.ListenAndServe()
 	if err != nil {
 		return err

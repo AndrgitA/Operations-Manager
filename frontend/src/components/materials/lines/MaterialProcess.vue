@@ -18,8 +18,11 @@ div.material-line-process(v-if="!!data")
         span.pos14.regular.font-body.black.inline-block.limited-text-line {{ data.tty }}
         span.pos15.regular.font-body.black.inline-block.limited-text-line {{ data.uid }}
         span.pos16.regular.font-body.black.inline-block.limited-text-line {{ data.vsz }}
-        div.pos17(:panel__tooltip="data.cmd")
-            span.regular.font-body.black.limited-text-line {{ data.cmd }}
+        template(v-if="!!data.cmd && data.cmd.length > 146")
+            div.pos17(:panel__tooltip="data.cmd")
+                span.regular.font-body.black.limited-text-line {{ data.cmd }}
+        template(v-else)
+                span.pos17.regular.font-body.black.limited-text-line {{ data.cmd }}
         dropdown-component.material-line-process__dropdown.inline-block(
             :items="dropdownItems"
             @onChange="handleDropdown"

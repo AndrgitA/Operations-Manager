@@ -3,7 +3,7 @@ import Router from 'vue-router';
 
 const Login = () => import(/* webpackChunkName: "pageLogin" */ '@/views/Login.vue');
 
-const Monitoring = () => import(/* webpackChunkName: "pageMonitoring" */ '@/views/Monitoring.vue');
+const Information = () => import(/* webpackChunkName: "pageInformation" */ '@/views/Information.vue');
 const Processes = () => import(/* webpackChunkName: "pageProcesses" */ '@/views/Processes.vue');
 const Scripts = () => import(/* webpackScripts: "pageScripts" */ '@/views/Scripts.vue');
 Vue.use(Router);
@@ -34,9 +34,9 @@ const router = new Router ({
             component: Login
         },
         {
-            path: '/monitoring',
-            name: 'Monitoring',
-            component: Monitoring
+            path: '/information',
+            name: 'Information',
+            component: Information
         },
         {
             path: '/processes',

@@ -8,7 +8,7 @@ import (
 )
 
 func loginHandle(w http.ResponseWriter, r *http.Request) {
-	setupResponse(&w, r)
+	SetupResponse(&w, r)
 
 	switch r.Method {
 	case "GET":

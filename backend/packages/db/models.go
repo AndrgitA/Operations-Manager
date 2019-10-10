@@ -1,5 +1,7 @@
 package dbm
 
+import "fmt"
+
 type Role string
 
 const (
@@ -65,11 +67,40 @@ type PostProcessesHttp struct {
 	Attributes string `json:"attributes`
 }
 
+type StatusScript string
+
+const (
+	STATUS_SCRIPT_DELETE      StatusScript = "DELETE"
+	STATUS_SCRIPT_START       StatusScript = "START"
+	STATUS_SCRIPT_NEW         StatusScript = "NEW"
+	STATUS_SCRIPT_NOT_CHANGED StatusScript = "NOT_CHANGED"
+	STATUS_SCRIPT_UPDATE      StatusScript = "UPDATE"
+)
+
 type ScriptHttp struct {
-	ID   int    `json:"id"`   //	Идентификатор скрипта в бд
-	Text string `json:"text"` // 	Логин пользователя
+	ID       int    `json:"id"`       //	Идентификатор скрипта в бд
+	Position int    `json:"position"` // 	Приоритет отображения
+	Text     string `json:"text"`     // 	Логин пользователя
+}
+
+func (s *ScriptHttp) String() string {
+	return fmt.Sprintf("ScriptHttp:\n"+
+		"\tID: %d\n"+
+		"\tPosition: %d\n"+
+		"\tText: %s\n", s.ID, s.Position, s.Text)
 }
 
 type PostScriptHttp struct {
-	Text string `json:"text"` // 	Логин пользователя
+	ID       int          `json:"id"`       //	Идентификатор скрипта в бд или -1, если новый
+	Position int          `json:"position"` // 	Приоритет отображения
+	Text     string       `json:"text"`     // 	Логин пользователя
+	Status   StatusScript `json:"status"`   //  Статус действия
+}
+
+func (s *PostScriptHttp) String() string {
+	return fmt.Sprintf("PostScriptHttp:\n"+
+		"\tID: %d\n"+
+		"\tPosition: %d\n"+
+		"\tText: %s\n"+
+		"\tStatus: %s\n", s.ID, s.Position, s.Text, s.Status)
 }

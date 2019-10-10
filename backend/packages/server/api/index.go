@@ -26,7 +26,7 @@ func Unmarshel(r io.Reader, v interface{}) error {
 	return json.NewDecoder(r).Decode(v)
 }
 
-func setupResponse(w *http.ResponseWriter, req *http.Request) {
+func SetupResponse(w *http.ResponseWriter, req *http.Request) {
 	(*w).Header().Set("Content-Type", "application/json")
 	(*w).Header().Set("Access-Control-Allow-Credentials", "true")
 	(*w).Header().Set("Access-Control-Allow-Origin", "*")
@@ -34,21 +34,22 @@ func setupResponse(w *http.ResponseWriter, req *http.Request) {
 	(*w).Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Set-Cookie, *")
 }
 
-func verify(f func(http.ResponseWriter, *http.Request)) func(http.ResponseWriter, *http.Request) {
+func verify(f func(http.ResponseWriter, *http.Request, int)) func(http.ResponseWriter, *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 
-		log.Println(r.Method, r.URL.Path)
+		log.Println("[api -> index.go]: ", r.Method, r.URL.Path)
 		if r.Method == "OPTIONS" {
-			f(w, r)
+			f(w, r, -1)
 			return
 		}
-		_, err := db.GetUserByToken(r.Header.Get("Token"))
+		u, err := db.GetUserByToken(r.Header.Get("Token"))
 		if err != nil {
-			setupResponse(&w, r)
+			SetupResponse(&w, r)
 			http.Error(w, err.Error(), http.StatusUnauthorized)
 			return
 		}
-		f(w, r)
+
+		f(w, r, u.ID)
 	}
 }
 func InitRouter(router *mux.Router, DataBase *dbm.DB) error {
@@ -67,7 +68,8 @@ func InitRouter(router *mux.Router, DataBase *dbm.DB) error {
 	router.HandleFunc("/api/v1/processes", verify(processHandle))
 	router.HandleFunc("/api/v1/processes/{pid}", verify(processPidHandle))
 	router.HandleFunc("/api/v1/scripts", verify(scriptsHandle))
-	router.HandleFunc("/api/v1/scripts/{id}", verify(scriptHandle))
+	router.HandleFunc("/api/v1/information", verify(informationHandle))
+	// router.HandleFunc("/api/v1/scripts/{id}", verify(scriptHandle))
 	// homeHandle := http.HandlerFunc(home)
 	// router.HandleFunc("/", authMiddleWare(homeHandle))
 	return nil

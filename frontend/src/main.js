@@ -6,7 +6,7 @@ import i18n from '@/tools/language.js';
 import { initMiddleWare } from '@/tools/axios';
 import { initUser } from '@/tools/additionalMain.js';
 
-// import TextareaAutosize from 'vue-textarea-autosize';
+import TextareaAutosize from 'vue-textarea-autosize';
 
 import VueCookie from 'vue-cookie';
 
@@ -20,6 +20,7 @@ import PanelPlugin from '@/plugins/panel/panel.js';
 
 locale.use(lang);
 Vue.use(VueCookie);
+Vue.use(TextareaAutosize);
 
 Vue.use(PanelPlugin);
 
@@ -126,7 +127,7 @@ function initApp(user = null) {
   console.log("[main.js]: initApp: ", user);
 
   // comment this code, until there are no server requests
-  // router.beforeEach(routerBeforeEach(store));       // registration hooh beforeEach for router
+  router.beforeEach(routerBeforeEach(store));       // registration hooh beforeEach for router
   
   store.dispatch('initializeUserData', { user, token });
 

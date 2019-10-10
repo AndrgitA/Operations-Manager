@@ -1,7 +1,9 @@
 {
     "messages": {
         "$buttons": {
+            "add_script": "Добавить скрипт",
             "new": "Новый",
+            "save": "Сохранить",
             "start": "Запустить"
         },
         "$common": {
@@ -10,6 +12,13 @@
             "no_data": "Нет данных",
             "none": "Пусто",
             "nothing_found": "Ничего не найдено",
+            "status_script": {
+                "DELETE": "На удаление",
+                "START": "Ожидает запуска",
+                "NEW": "Новый",
+                "NOT_CHANGED": "Не изменялся",
+                "UPDATE": "На обновление"
+            },
             "week_days": {
                 "friday": "Пятница",
                 "monday": "Понедельник",
@@ -22,6 +31,8 @@
             "yes": "Да"
         },
         "$controls": {
+            "information": "Информация",
+            "scripts": "Скрипты"
         },
         "$date": {
             "ago": "Назад",
@@ -34,16 +45,26 @@
             "s": "с"
         },
         "$dropdown": {
+            "cancel": "Отменить все действия",
+            "delete": "Удалить",
             "exit": "Завершить процесс",
             "interrupt": "Вызвать прерывание",
             "kill": "Убить процесс",
+            "start": "Запустить",
             "stop": "Остановить процесс"
         },
         "$fields": {
+            "all_scripts": "Всего скриптов",
+            "architecture": "Архитектура",
             "attributes": "Атрибуты команды",
+            "bios": "BIOS",
             "cmd": "Комманда",
             "login": "Логин",
+            "memory_ram": "ОП память",
+            "name_os": "Название OS",
+            "need_save": "Необходимо обновление данных",
             "new_public_process": "Новый процесс",
+            "node": "Узел",
             "password": "Пароль"
         },
         "$login": {
@@ -59,8 +80,8 @@
             }
         },
         "$menu": {
+            "information": "Информация",
             "logout": "Выйти",
-            "monitoring": "Мониторинг",
             "name_panel": "Operations Manager",
             "processes": "Процессы",
             "scripts": "Скрипты"
@@ -110,9 +131,13 @@
             "max_number_files": "Количество файлов для загрузки превышает",
             "process_started": "Процесс успешно запущен",
             "process_started_failed": "Запуск процесса неуспешен",
+            "update_success": "Данные обновлены",
             "welcome": "Welcome!"
         },
         "$sections": {
+            "board": "Устройство",
+            "chassis": "Корпус",
+            "storage": "Накопительные устройства"
         },
         "$title_material": {
             "c": "C",

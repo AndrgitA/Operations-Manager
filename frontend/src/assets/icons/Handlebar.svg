@@ -1,0 +1,7 @@
+<svg width="20" height="10" viewBox="0 0 20 10" fill="none" xmlns="http://www.w3.org/2000/svg">
+<rect class="handlebar-icon--" width="20" height="10" fill="black" fill-opacity="0"/>
+<rect class="handlebar-icon--line" width="20" height="1" fill="#ABABAB"/>
+<rect class="handlebar-icon--line" y="3" width="20" height="1" fill="#ABABAB"/>
+<rect class="handlebar-icon--line" y="6" width="20" height="1" fill="#ABABAB"/>
+<rect class="handlebar-icon--line" y="9" width="20" height="1" fill="#ABABAB"/>
+</svg>

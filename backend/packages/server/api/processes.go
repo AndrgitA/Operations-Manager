@@ -2,7 +2,6 @@ package api
 
 import (
 	"encoding/json"
-	"log"
 	"net/http"
 	"os"
 	"strconv"
@@ -13,8 +12,8 @@ import (
 	mux "github.com/gorilla/mux"
 )
 
-func processHandle(w http.ResponseWriter, r *http.Request) {
-	setupResponse(&w, r)
+func processHandle(w http.ResponseWriter, r *http.Request, userID int) {
+	SetupResponse(&w, r)
 	switch r.Method {
 	case "GET":
 		processes, err := proc.GetRunningProcesses()
@@ -60,8 +59,8 @@ func processHandle(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func processPidHandle(w http.ResponseWriter, r *http.Request) {
-	setupResponse(&w, r)
+func processPidHandle(w http.ResponseWriter, r *http.Request, userID int) {
+	SetupResponse(&w, r)
 	vars := mux.Vars(r)
 	if len(vars["pid"]) == 0 {
 		http.Error(w, "Bad pid", http.StatusBadRequest)
@@ -127,7 +126,7 @@ func processPidHandle(w http.ResponseWriter, r *http.Request) {
 			}
 		}
 
-		log.Println(process)
+		// log.Println("[api -> processes.go]: ", process)
 		w.WriteHeader(http.StatusOK)
 	// case "POST":
 	// 	var body *dbm.PostLoginHttp

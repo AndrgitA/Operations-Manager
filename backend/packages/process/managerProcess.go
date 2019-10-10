@@ -3,10 +3,14 @@ package proc
 import (
 	"bufio"
 	"bytes"
+	"crypto/md5"
 	"errors"
+	"fmt"
 	"io"
+	"log"
 	"os"
 	"os/exec"
+	"sync"
 	"syscall"
 	"time"
 )
@@ -92,6 +96,72 @@ func StartProcess(msg *chan string, nameCommand string, argsCommand ...string) (
 		*fRun <- true
 		fCmd.Wait()
 	}(pCmd, &pRun, msg)
+
+	if <-pRun {
+		return pCmd, nil
+	}
+	return nil, errors.New("Can't start process")
+}
+
+func saveFile(fullPath string, fileText []byte) error {
+	var lock sync.Mutex
+	lock.Lock()
+
+	f, err := os.Create(fullPath)
+	if err != nil {
+		return err
+	}
+	_, err = io.Copy(f, bytes.NewReader(fileText))
+	if err != nil {
+		return err
+	}
+	f.Close()
+	lock.Unlock()
+	log.Println("[proc -> managerProcess.go]: Save file: ", fullPath)
+	return nil
+}
+
+func deleteFile(fullPath string) error {
+	var lock sync.Mutex
+	lock.Lock()
+
+	err := os.Remove(fullPath)
+	if err != nil {
+		return err
+	}
+	lock.Unlock()
+	log.Println("[proc -> managerProcess.go]: Deleted file: ", fullPath)
+	return nil
+}
+
+// StartScripts function start in goroutine shell script
+func StartScripts(text string) (pCmd *exec.Cmd, err error) {
+	dir := "/home/andrey/Документы/Andrgit/Study/Golang/Operations-Manager/backend/src/tmpScripts/"
+	path := "script__" + time.Now().String()
+	fullPath := fmt.Sprintf("%x", md5.Sum([]byte(dir+path)))
+	err = saveFile(fullPath, []byte(text))
+	if err != nil {
+		return nil, err
+	}
+
+	var pRun chan bool = make(chan bool, 1)
+	pCmd = exec.Command("sh", fullPath)
+
+	go func(fCmd *exec.Cmd, fRun *chan bool) {
+		if err := fCmd.Start(); err != nil {
+			*fRun <- false
+		} else {
+			log.Println("[proc -> managerProcess.go]: Start script from file: ", fullPath)
+			log.Println("[proc -> managerProcess.go]: Start process: ", fCmd.Process.Pid)
+			*fRun <- true
+			fCmd.Wait()
+			log.Println("[proc -> managerProcess.go]: Stop process: ", fCmd.Process.Pid)
+		}
+		err = deleteFile(fullPath)
+		if err != nil {
+			log.Println(err)
+		}
+	}(pCmd, &pRun)
 
 	if <-pRun {
 		return pCmd, nil

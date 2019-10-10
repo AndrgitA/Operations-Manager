@@ -53,10 +53,10 @@ export default {
         &-element {
             cursor: pointer;
             &:hover {
-                color: $grey50;
+                color: $cyan-50;
             }
             &:active {
-                color: $black;
+                color: $cyan-dark;
             }
             &.is-disabled {
                 cursor: default;

@@ -104,8 +104,9 @@ export default {
             this.focused = false;
         },
         handleTextarea(value) {
-            console.log("[TextareaComponent.vue]: handleTextarea: ", event);
-            this.$emit('input', value);
+            if (this.value !== value) {
+                this.$emit('input', value);
+            }
         },
     }
 }
