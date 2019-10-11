@@ -41,17 +41,6 @@ func processHandle(w http.ResponseWriter, r *http.Request, userID int) {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
 		}
-		// 	var body *dbm.PostLoginHttp
-		// 	err := Unmarshel(r.Body, &body)
-		// 	if err != nil {
-		// 		http.Error(w, err.Error(), http.StatusBadRequest)
-		// 		return
-		// 	}
-		// 	user, err := db.GetUser(body.Login, body.Password)
-		// 	if err != nil {
-		// 		http.Error(w, err.Error(), http.StatusUnauthorized)
-		// 		return
-		// 	}
 		json.NewEncoder(w).Encode(map[string]bool{"success": true})
 	default:
 		http.Error(w, "Bad request", http.StatusBadRequest)
@@ -73,17 +62,6 @@ func processPidHandle(w http.ResponseWriter, r *http.Request, userID int) {
 		return
 	}
 	switch r.Method {
-	// case "GET":
-	// 	processes, err := proc.GetRunningProcesses()
-	// 	if err != nil {
-	// 		http.Error(w, err.Error(), http.StatusNotFound)
-	// 		return
-	// 	}
-	// 	var response []*dbm.ProcessHttp
-	// 	for i, _ := range processes {
-	// 		response = append(response, processes[i].ConvertToProcessHTTP())
-	// 	}
-	// 	json.NewEncoder(w).Encode(response)
 	case "OPTIONS":
 		w.WriteHeader(http.StatusOK)
 	case "POST":
@@ -125,22 +103,7 @@ func processPidHandle(w http.ResponseWriter, r *http.Request, userID int) {
 				return
 			}
 		}
-
-		// log.Println("[api -> processes.go]: ", process)
 		w.WriteHeader(http.StatusOK)
-	// case "POST":
-	// 	var body *dbm.PostLoginHttp
-	// 	err := Unmarshel(r.Body, &body)
-	// 	if err != nil {
-	// 		http.Error(w, err.Error(), http.StatusBadRequest)
-	// 		return
-	// 	}
-	// 	user, err := db.GetUser(body.Login, body.Password)
-	// 	if err != nil {
-	// 		http.Error(w, err.Error(), http.StatusUnauthorized)
-	// 		return
-	// 	}
-	// 	json.NewEncoder(w).Encode(user)
 	default:
 		http.Error(w, "Bad request", http.StatusBadRequest)
 		return

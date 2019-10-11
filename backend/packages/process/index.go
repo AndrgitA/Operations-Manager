@@ -240,7 +240,6 @@ func ParseDataPS(str string, countParams uint) [][]string {
 			if innerIndex == int(countParams) {
 				funcResult = append(funcResult, innerResultArray)
 			}
-			// fmt.Println(lines[i], "\n", innerResultArray)
 		}
 	}
 	if len(funcResult) == 0 {
@@ -254,8 +253,6 @@ func GetProcessInfo(pid uint) (*Process, error) {
 	var proc *Process = new(Process)
 	var command string = "ps -p " + strconv.Itoa(int(pid)) + " -o c,%mem=MEM,pid,pgid,ppid,psr,rss,sid,start=START,stat,sz,time,tpgid,tty,uid,user,vsz,cmd"
 	const countParams uint = 18
-
-	// fmt.Println(command)
 
 	out, err := ExecCommand("bash", "-c", command)
 	if err != nil {

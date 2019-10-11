@@ -8,6 +8,10 @@ div#page-information.scroll-containter.overflow-hidden-auto.back_cyan-1(v-if="is
                     :data="getBoard"
                 )
                 info-view-section.information__section(
+                    :title="`${ $t('$sections.cpu') } / ${ $t('$sections.kernel') } `"
+                    :data="getCPUKernel"
+                )
+                info-view-section.information__section(
                     :title="`${ $t('$sections.storage') }`"
                     :data="getStorage"
                 )
@@ -78,76 +82,38 @@ export default {
                     { name: 'vendor', text: this.material.packageInfo.chassis.vendor },
                     { name: 'version', text: this.material.packageInfo.chassis.version }
                 ]
-            ]
+            ];
         },
         getStorage() {
             return this.material.packageInfo.storage.map(storage => {
                 return Object.keys(storage).map(key => {
-                    return { name: key, text: storage[key] }
+                    if (key === 'size') {
+                        return { name: key, text: storage[key] + " GB" }
+                    } else {
+                        return { name: key, text: storage[key] }
+                    }
                 })
-            })
+            });
+        },
+        getCPUKernel() {
+            return [
+                [
+                    { name: 'model', text: this.material.packageInfo.cpu.model },
+                    { name: 'cpus / cores / threads', text: `${ this.material.packageInfo.cpu.cpus } / ${ this.material.packageInfo.cpu.cores } / ${ this.material.packageInfo.cpu.threads }` },
+                    { name: 'vendor', text: this.material.packageInfo.cpu.vendor },
+                ],
+                [
+                    { name: 'architecture', text: this.material.packageInfo.kernel.architecture },
+                    { name: 'release', text: this.material.packageInfo.kernel.release },
+                    { name: 'version', text: this.material.packageInfo.kernel.version },
+                ]
+            ];
         }
-        // getTitleValue() {
-        //     return {
-        //         titleText: "Скрипты для тестирования",
-        //         titleInfo: "(OS) Ubuntu 18.04.3 LTS"
-        //     };
-        // },
-        // needSave() {
-        //     return !this.$panel.isEqual(this.material, this.originalMaterial);
-        // }
     },
     created() {
         this.fetchData();
     },
     methods: {
-        // handleInput(key, value) {
-        //     this.material[key] = value;
-        // },
-        // handleEmitControl() {
-        //     console.log("[Information.vue]: handleEmitControl: ");
-        //     let data = this.setPositions(this.material.blocks);
-        //     data.map(block => {
-        //         if (block.status === 'NOT_CHANGED') {
-        //             block.status = 'UPDATE';
-        //         }
-        //         return block;
-        //     });
-        //     console.log("POST DATA: ", data);
-        //     this.putInformation(data);
-        // },
-        // putInformation(putData) {
-        //     console.log("[Information.vue]: putInformation: ", putData);
-        //     this.$store.state.axios.put('/information', putData).then(response => {
-        //         console.log('[Information.vue]: putInformation(response): ', response);
-        //         if (response.status === 200) {
-        //             this.$store.commit('addNotification', { 
-        //                 text: `${ this.$t('$notifications.update_success') }`, 
-        //                 color: 'green' 
-        //             });
-        //             this.fetchData();
-        //         }
-        //     }).catch(error => {
-        //         console.log('[Information.vue]: putInformation(error): ', error);
-        //     })
-        // },
-        // setPositions(values) {
-        //     let i = 0;
-        //     let array = values.map(block => {
-        //         block.position = i++;
-        //         return block;
-        //     })
-        //     return array;
-        // },
-        // getSortPosition(values) {
-        //     let result = this.$panel.clone(values);
-        //     result.sort((a, b) => {
-        //         if (a.position < b.position) return -1;
-        //         if (a.position > b.position) return 1;
-        //         return 0;
-        //     });
-        //     return result;
-        // },
         fetchData() {
             this.$store.state.axios.get('/information').then(response => {
                 console.log("[Information.vue]: fetchData(response): ", response);

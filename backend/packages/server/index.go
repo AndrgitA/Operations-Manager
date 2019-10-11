@@ -29,12 +29,8 @@ type Server struct {
 }
 
 func (h *spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	// FOR VUE APP. Check return file
-	log.Println("[serv - index.go]: Header", r.Header)
-	// for i := range r.Header {
-	// 	log.Println("[serv - index.go]: Header[ " + i + " ]: " + r.Header.Get(i))
-	// }
 	log.Println("[serv -> index.go]: ServeHTTP(" + r.URL.Path + ")")
+	// FOR VUE APP. Check return file
 	var validURL = regexp.MustCompilePOSIX(`^.*\..+$`)
 	if !validURL.MatchString(r.URL.Path) {
 		r.URL.Path = "/"
@@ -86,18 +82,12 @@ func CreateServer(host string, port uint, db *dbm.DB) *Server {
 func (s *Server) Start() error {
 	var router *mux.Router = s.server.Handler.(*mux.Router)
 
-	//register all api
+	// register all api
 	api.InitRouter(router, s.db)
-
-	// router.HandleFunc("/{*}", func(w http.ResponseWriter, r *http.Request) {
-	// 	log.Println("ROUTE OTHER: ", r.URL.Path, r.URL.Path == "/")
-	// 	if r.URL.Path != "/" {
-	// 		http.Redirect(w, r, "/", http.StatusSeeOther)
-	// 	}
-	// })
-	// static files
+	// return static files
 	router.PathPrefix("/").Handler(s.spa)
 	fmt.Printf("Connect to : http://%s\n", s.server.Addr)
+
 	err := s.server.ListenAndServe()
 	if err != nil {
 		return err

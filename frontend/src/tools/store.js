@@ -55,14 +55,14 @@ const store = new Vuex.Store({
             
             console.log("[store.js]: Router: ", router);
             if (!!router) {
-                router.replace({ path: '/processes' });
+                router.replace({ path: '/information' });
             }
         },
         Logout(state, router) {
             console.log("[store.js]: Logout: ", router);
             state.isAuth = false;
-            // delete state.axios.defaults.headers.common['Token'];     // TODO: Uncomment after end back
-            // VueCookie.delete('omanager-panel__token')
+            delete state.axios.defaults.headers.common['Token'];
+            VueCookie.delete('omanager-panel__token')
 
             console.log("[store.js]: Router: ", router);
             if (!!router && router.history.current.path !== '/login') {

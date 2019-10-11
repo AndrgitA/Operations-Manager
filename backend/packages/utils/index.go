@@ -49,24 +49,12 @@ func ConvertString(_type TypeEnum, value string) Value {
 	case Int:
 		result, err = strconv.ParseInt(value, 10, 64)
 		returnValue = Value{Value: int(result.(int64)), Type: _type, Null: err != nil}
-		// if err != nil {
-		// 	return nil
-		// }
-		// return int((result).(int64))
 	case Uint:
 		result, err = strconv.ParseUint(value, 10, 64)
 		returnValue = Value{Value: uint(result.(uint64)), Type: _type, Null: err != nil}
-		// if err != nil {
-		// 	return nil
-		// }
-		// return uint((result).(uint64))
 	case Float:
 		result, err = strconv.ParseFloat(value, 64)
 		returnValue = Value{Value: float32(result.(float64)), Type: _type, Null: err != nil}
-		// if err != nil {
-		// 	return nil
-		// }
-		// return float32((result).(float64))
 	case String:
 		returnValue = Value{Value: value, Type: _type, Null: false}
 	default:

@@ -64,13 +64,9 @@ func InitRouter(router *mux.Router, DataBase *dbm.DB) error {
 	db = DataBase
 	router.HandleFunc("/api/v1/login", loginHandle)
 
-	// router.Use(authMiddleWare)
 	router.HandleFunc("/api/v1/processes", verify(processHandle))
 	router.HandleFunc("/api/v1/processes/{pid}", verify(processPidHandle))
 	router.HandleFunc("/api/v1/scripts", verify(scriptsHandle))
 	router.HandleFunc("/api/v1/information", verify(informationHandle))
-	// router.HandleFunc("/api/v1/scripts/{id}", verify(scriptHandle))
-	// homeHandle := http.HandlerFunc(home)
-	// router.HandleFunc("/", authMiddleWare(homeHandle))
 	return nil
 }

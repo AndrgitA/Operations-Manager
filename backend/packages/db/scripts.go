@@ -20,7 +20,6 @@ func (db *DB) GetScripts(userID int) ([]*ScriptHttp, error) {
 			scripts = append(scripts, script)
 		}
 	}
-	// log.Println("[dbm -> scripts.go]: SCRIPTS: ", scripts)
 	return scripts, nil
 }
 

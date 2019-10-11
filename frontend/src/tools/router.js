@@ -75,7 +75,7 @@ const routerBeforeEach = function(store) {
         switch (to.path) {
             case '/login':
                 if (!!store.state.isAuth) {
-                    let pathTo = '/processes'; // TODO: change later to /modules
+                    let pathTo = '/information'; // TODO: change later to /modules
                     next({ path: pathTo });
                 } else {
                     next();

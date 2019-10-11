@@ -46,35 +46,26 @@ func pingMessage(pingCmd *exec.Cmd, pingMsgChan *chan string) {
 		} else {
 			x, _ := GetProcessStatus(pingCmd.Process.Pid)
 			flagEnd = x == nil
-			// *pingMsgChan <- strconv.Itoa(i)
 			read := bufio.NewReader(pingCmd.Stdout.(io.Reader))
 			var lines []string = make([]string, 0)
 			for {
-				// for j := 0; j < iterations; j++ {
-				// 	read.ReadString('\n')
-				// }
 				if line, err := read.ReadString('\n'); err == nil {
 					if len(line) > 70 {
 						lines = append(lines, line)
 					}
-					// fmt.Println(line)
 				} else {
-					// fmt.Println(err)
 					break
 				}
 			}
 			if len(lines) > 0 {
-				// *pingMsgChan <- strings.Join(lines, "")
 				*pingMsgChan <- lines[len(lines)-1]
 			} else {
 				*pingMsgChan <- "%none%"
 			}
 			iterations += 2
 		}
-		// *pingMsgChan <- b.String()
 	}
 	*pingMsgChan <- "%end%"
-	// *pingMsgChan = chan string(nil)
 }
 
 func StartProcess(msg *chan string, nameCommand string, argsCommand ...string) (pCmd *exec.Cmd, err error) {
@@ -86,7 +77,6 @@ func StartProcess(msg *chan string, nameCommand string, argsCommand ...string) (
 	}
 
 	go func(fCmd *exec.Cmd, fRun *chan bool, fMsg *chan string) {
-		// fmt.Println("IN LEVEL 0: ", fCmd, fCmd.ProcessState)
 		if err := fCmd.Start(); err != nil {
 			*fRun <- false
 		}
