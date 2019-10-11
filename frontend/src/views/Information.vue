@@ -25,6 +25,9 @@ div#page-information.scroll-containter.overflow-hidden-auto.back_cyan-1(v-if="is
                     :memoryRam="getRam"
                     :node="getNode"
                 )
+                span.information__button-text.btn-text(
+                    @click="handleExport"
+                ) {{ $t('$buttons.export') }}
 </template>
 
 <script>
@@ -125,7 +128,20 @@ export default {
                 console.log("[Information.vue]: fetchData(error): ", error);
             });
         },
-
+        handleExport() {
+            if (!!this.material) {
+                let text = JSON.stringify(this.material, null, "\t");
+                let data = new Blob([text], { type : 'application/json' });
+                let target = document.createElement("a");
+                let url = window.URL.createObjectURL(data);
+                target.setAttribute("href", url)
+                target.setAttribute("download", "operations-manager__info-system.json");
+                target.click();
+                setTimeout(() => {
+                    window.URL.revokeObjectURL(url);
+                }, 100);
+            }
+        }
     }
 
 }
@@ -153,6 +169,10 @@ export default {
             margin-top: 20px;
             width: 100%;
             background-color: $white;
+        }
+        &__button-text {
+            margin-top: 30px;
+            margin-left: 21px;
         }
     }
 }

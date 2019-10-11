@@ -2,6 +2,7 @@
     "messages": {
         "$buttons": {
             "add_script": "Добавить скрипт",
+            "export": "Экспорт",
             "new": "Новый",
             "save": "Сохранить",
             "start": "Запустить"

@@ -113,14 +113,14 @@
 
 .btn-text {
     position: relative;
-    color: $grey50;
-    border-bottom: 1px solid $grey33;
+    color: $cyan-30;
+    border-bottom: 1px solid $cyan-30;
     cursor: pointer;
     -webkit-user-select: none;
     display: inline-block;
     &:hover {
-        border-bottom: 1px solid $black;
-        color: $black;
+        border-bottom: 1px solid $cyan-dark;
+        color: $cyan-dark;
     }
 }
 .language-button {
