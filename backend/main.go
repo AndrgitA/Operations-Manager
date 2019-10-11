@@ -16,6 +16,7 @@ func main() {
 	}
 
 	server := serv.CreateServer("localhost", 8888, db)
+	// server := serv.CreateServer("37.146.185.71", 8888, db)
 	err = server.Start()
 	if err != nil {
 		fmt.Println("ERROR START SERVER: ", err)

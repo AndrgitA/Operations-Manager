@@ -2,9 +2,11 @@ package serv
 
 import (
 	"fmt"
+	"log"
 	"net/http"
 	"os"
 	"path/filepath"
+	"regexp"
 	"strconv"
 	"time"
 
@@ -27,7 +29,18 @@ type Server struct {
 }
 
 func (h *spaHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
-	// get absolute path to prevent directory traversal
+	// FOR VUE APP. Check return file
+	log.Println("[serv - index.go]: Header", r.Header)
+	// for i := range r.Header {
+	// 	log.Println("[serv - index.go]: Header[ " + i + " ]: " + r.Header.Get(i))
+	// }
+	log.Println("[serv -> index.go]: ServeHTTP(" + r.URL.Path + ")")
+	var validURL = regexp.MustCompilePOSIX(`^.*\..+$`)
+	if !validURL.MatchString(r.URL.Path) {
+		r.URL.Path = "/"
+		log.Println("[serv -> index.go]: Edit url(" + r.URL.Path + ") to -> \"/\"")
+	}
+	// get absolute path to prevent directory traversal "
 	path, err := filepath.Abs(r.URL.Path)
 	if err != nil {
 		// if failed to get the absolute path respond with a 400 bad request and stop
@@ -76,9 +89,14 @@ func (s *Server) Start() error {
 	//register all api
 	api.InitRouter(router, s.db)
 
+	// router.HandleFunc("/{*}", func(w http.ResponseWriter, r *http.Request) {
+	// 	log.Println("ROUTE OTHER: ", r.URL.Path, r.URL.Path == "/")
+	// 	if r.URL.Path != "/" {
+	// 		http.Redirect(w, r, "/", http.StatusSeeOther)
+	// 	}
+	// })
 	// static files
 	router.PathPrefix("/").Handler(s.spa)
-
 	fmt.Printf("Connect to : http://%s\n", s.server.Addr)
 	err := s.server.ListenAndServe()
 	if err != nil {

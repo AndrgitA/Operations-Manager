@@ -1,0 +1,279 @@
+.material-photosession-layout {
+  position: relative;
+  width: 100%;
+}
+
+.material-photosession-layout .pos0 {
+  width: 250px;
+  margin-left: 40px;
+}
+
+.material-photosession-layout .pos1 {
+  width: 160px;
+  margin-left: 20px;
+}
+
+.material-photosession-layout .pos2 {
+  width: 230px;
+  margin-left: 20px;
+}
+
+.material-photosession-layout .pos3 {
+  width: 130px;
+  margin-left: 20px;
+}
+
+.material-photosession-layout .pos4 {
+  width: 220px;
+  margin-left: 20px;
+}
+
+.material-photosession-layout .pos5 {
+  width: 90px;
+  margin-left: 20px;
+}
+
+.material-process-layout {
+  position: relative;
+  width: 100%;
+}
+
+.material-process-layout .pos0 {
+  width: 100px;
+  margin-left: 10px;
+}
+
+.material-process-layout .pos1 {
+  width: 25px;
+  margin-left: 10px;
+}
+
+.material-process-layout .pos2 {
+  width: 40px;
+  margin-left: 10px;
+}
+
+.material-process-layout .pos3, .material-process-layout .pos4, .material-process-layout .pos5,
+.material-process-layout .pos7, .material-process-layout .pos8, .material-process-layout .pos13,
+.material-process-layout .pos15 {
+  width: 65px;
+  margin-left: 10px;
+}
+
+.material-process-layout .pos6 {
+  width: 30px;
+  margin-left: 10px;
+}
+
+.material-process-layout .pos9, .material-process-layout .pos12 {
+  width: 70px;
+  margin-left: 10px;
+}
+
+.material-process-layout .pos10 {
+  width: 35px;
+  margin-left: 10px;
+}
+
+.material-process-layout .pos14 {
+  width: 40px;
+  margin-left: 10px;
+}
+
+.material-process-layout .pos17 {
+  width: 30px;
+  margin-left: 10px;
+}
+
+.material-process-layout .pos11, .material-process-layout .pos16 {
+  width: 75px;
+  margin-left: 10px;
+}
+
+.card-user-section-layout {
+  position: relative;
+  width: 100%;
+}
+
+.card-user-section-layout .pos0 {
+  width: 60px;
+  margin-left: 10px;
+}
+
+.card-user-section-layout .pos1 {
+  width: 100%;
+  margin-left: 10px;
+}
+
+.card-user-section-layout .pos2 {
+  width: 30px;
+  margin-left: 10px;
+}
+
+.material-feed-section-layout, .material-story-section-layout {
+  position: relative;
+  width: 100%;
+}
+
+.material-feed-section-layout .pos0, .material-story-section-layout .pos0 {
+  width: 20px;
+  margin-left: 9px;
+}
+
+.material-feed-section-layout .pos1, .material-story-section-layout .pos1 {
+  width: 100%;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 10px;
+}
+
+.material-feed-section-layout .pos2, .material-story-section-layout .pos2 {
+  width: 150px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.material-album-section-layout {
+  position: relative;
+  width: 100%;
+}
+
+.material-album-section-layout .pos0 {
+  width: 15px;
+  margin-left: 19px;
+}
+
+.material-album-section-layout .pos1 {
+  width: 230px;
+  margin-left: 15px;
+}
+
+.material-album-section-layout .pos2 {
+  margin-left: 20px;
+  width: 269px;
+}
+
+.line-client-section-layout {
+  position: relative;
+  width: 100%;
+}
+
+.line-client-section-layout .pos0 {
+  width: 40px;
+  margin-left: 19px;
+}
+
+.line-client-section-layout .pos1 {
+  width: 320px;
+  margin-left: 20px;
+}
+
+.line-client-section-layout .pos2 {
+  width: 380px;
+  margin-left: 20px;
+}
+
+.line-executor-section-layout {
+  position: relative;
+  width: 100%;
+}
+
+.line-executor-section-layout .pos0 {
+  width: 40px;
+  margin-left: 19px;
+}
+
+.line-executor-section-layout .pos1 {
+  width: 320px;
+  margin-left: 20px;
+}
+
+.line-executor-section-layout .pos2, .line-executor-section-layout .pos3 {
+  width: 180px;
+  margin-left: 20px;
+}
+
+.line-promocode-section-layout, .line-feedback-section-layout {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.line-promocode-section-layout .pos0, .line-feedback-section-layout .pos0 {
+  margin-left: 19px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.line-promocode-section-layout .pos1, .line-feedback-section-layout .pos1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 20px;
+  margin-right: 19px;
+}
+
+.line-cancelation-section-layout, .line-application-section-layout {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.line-cancelation-section-layout .pos0, .line-application-section-layout .pos0 {
+  margin-left: 19px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.line-cancelation-section-layout .pos1, .line-application-section-layout .pos1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 20px;
+}
+
+.line-cancelation-section-layout .pos2, .line-application-section-layout .pos2 {
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
+  margin-left: 20px;
+  margin-right: 19px;
+}
+
+.line-photosession-section-layout {
+  position: relative;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.line-photosession-section-layout .pos0 {
+  margin-left: 21px;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.line-photosession-section-layout .pos1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 20px;
+}
+
+.line-photosession-section-layout .pos1 {
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+  margin-left: 20px;
+  margin-right: 19px;
+}
+/*# sourceMappingURL=materialLines.css.map */
