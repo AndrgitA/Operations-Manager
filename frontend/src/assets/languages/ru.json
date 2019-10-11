@@ -1,0 +1,165 @@
+{
+    "messages": {
+        "$buttons": {
+            "add_script": "Добавить скрипт",
+            "new": "Новый",
+            "save": "Сохранить",
+            "start": "Запустить"
+        },
+        "$common": {
+            "all_users": "Все владельцы",
+            "no": "Нет",
+            "no_data": "Нет данных",
+            "none": "Пусто",
+            "nothing_found": "Ничего не найдено",
+            "status_script": {
+                "DELETE": "На удаление",
+                "START": "Ожидает запуска",
+                "NEW": "Новый",
+                "NOT_CHANGED": "Не изменялся",
+                "UPDATE": "На обновление"
+            },
+            "week_days": {
+                "friday": "Пятница",
+                "monday": "Понедельник",
+                "saturday": "Суббота",
+                "sunday": "Воскресенье",
+                "thursday": "Четверг",
+                "tuesday": "Вторник",
+                "wednesday": "Среда"
+            },
+            "yes": "Да"
+        },
+        "$controls": {
+            "information": "Информация",
+            "scripts": "Скрипты"
+        },
+        "$date": {
+            "ago": "Назад",
+            "day": "День",
+            "days": "Дней",
+            "h": "ч",
+            "m": "м",
+            "never": "Никогда",
+            "today": "Сегодня",
+            "s": "с"
+        },
+        "$dropdown": {
+            "cancel": "Отменить все действия",
+            "delete": "Удалить",
+            "exit": "Завершить процесс",
+            "interrupt": "Вызвать прерывание",
+            "kill": "Убить процесс",
+            "start": "Запустить",
+            "stop": "Остановить процесс"
+        },
+        "$fields": {
+            "all_scripts": "Всего скриптов",
+            "architecture": "Архитектура",
+            "attributes": "Атрибуты команды",
+            "bios": "BIOS",
+            "cmd": "Комманда",
+            "login": "Логин",
+            "memory_ram": "ОП память",
+            "name_os": "Название OS",
+            "need_save": "Необходимо обновление данных",
+            "new_public_process": "Новый процесс",
+            "node": "Узел",
+            "password": "Пароль"
+        },
+        "$login": {
+            "login": "Login",
+            "panel": "panel",
+            "title_login": "Operations Manager"
+        },
+        "$modals": {
+            "message_box": {
+                "cannot_undone": "Данное действие нельзя будет отменить",
+                "question_leave": "Вы уверены?",
+                "lose_unsaved_data": "Вы потеряете все несохраненные данные"
+            }
+        },
+        "$menu": {
+            "information": "Информация",
+            "logout": "Выйти",
+            "name_panel": "Operations Manager",
+            "processes": "Процессы",
+            "scripts": "Скрипты"
+        },
+        "$month": {
+            "apr": "Апр",
+            "aug": "Авг",
+            "dec": "Дек",
+            "feb": "Фев",
+            "jan": "Янв",
+            "jul": "Июль",
+            "jun": "Июнь",
+            "mar": "Мар",
+            "nov": "Ноя",
+            "oct": "Окт",
+            "sep": "Сен",
+            "april": "Апреля",
+            "april_n": "Апрель",
+            "august": "Августа",
+            "august_n": "Август",
+            "december": "Декабря",
+            "december_n": "Декабрь",
+            "february": "Февраля",
+            "february_n": "Февраль",
+            "january": "Января",
+            "january_n": "Январь",
+            "july": "Июля",
+            "july_n": "Июль",
+            "june": "Июня",
+            "june_n": "Июнь",
+            "march": "Марта",
+            "march_n": "Март",
+            "may": "Мая",
+            "may_n": "Май",
+            "november": "Ноября",
+            "november_n": "Ноябрь",
+            "october": "Октября",
+            "october_n": "Октябрь",
+            "september": "Сентября",
+            "september_n": "Сентябрь"
+        },
+        "$notifications": {
+            "download_size_exceeds": "Размер загружаемого файла превышает",
+            "download_size_exceeds_s": "Размер некоторых загружаемых файлов превышает",
+            "fill_all_fields": "Fill in all the fields",
+            "login_failed": "Login failed. Please try again",
+            "max_number_files": "Количество файлов для загрузки превышает",
+            "process_started": "Процесс успешно запущен",
+            "process_started_failed": "Запуск процесса неуспешен",
+            "update_success": "Данные обновлены",
+            "welcome": "Welcome!"
+        },
+        "$sections": {
+            "board": "Устройство",
+            "chassis": "Корпус",
+            "cpu": "Процессор",
+            "kernel": "Ядро",
+            "storage": "Накопительные устройства"
+        },
+        "$title_material": {
+            "c": "C",
+            "cmd": "CMD",
+            "mem": "MEM",
+            "pid": "PID",
+            "pgid": "PGID",
+            "ppid": "PPID",
+            "psr": "PSR",
+            "rss": "RSS",
+            "sid": "SID",
+            "start": "Start",
+            "stat": "Stat",
+            "sz": "Size",
+            "time": "Time",
+            "tpgid": "TPGID",
+            "tty": "TTY",
+            "uid": "UID",
+            "vsz": "VSZ",
+            "user": "User"
+        }
+    }
+}

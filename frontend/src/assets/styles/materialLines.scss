@@ -1,0 +1,342 @@
+.material-photosession-layout {
+    position: relative;
+    width: 100%;
+    .pos0 {
+        width: 250px;
+        margin-left: 40px;
+    }
+    .pos1 {
+        width: 160px;
+        margin-left: 20px;
+    }
+    .pos2 {
+        width: 230px;
+        margin-left: 20px;
+    }
+    .pos3 {
+        width: 130px;
+        margin-left: 20px;
+    }
+    .pos4 {
+        width: 220px;
+        margin-left: 20px;
+    }
+    .pos5 {
+        width: 90px;
+        margin-left: 20px;
+    }
+}
+
+.material-process-layout {
+    position: relative;
+    width: 100%;
+    & .pos0 {
+        width: 100px;
+        margin-left: 10px;
+    }
+    & .pos1 {
+        width: 25px;
+        margin-left: 10px;
+    }
+    & .pos2 {
+        width: 40px;
+        margin-left: 10px;
+    }
+    & .pos3, & .pos4, & .pos5,
+    & .pos7, & .pos8, & .pos13,
+    & .pos15 {
+        width: 65px;
+        margin-left: 10px;
+    }
+    & .pos6 {
+        width: 30px;
+        margin-left: 10px;
+    }
+    & .pos9, & .pos12 {
+        width: 70px;
+        margin-left: 10px;
+    }
+    & .pos10 {
+        width: 35px;
+        margin-left: 10px;
+    }
+    & .pos14 {
+        width: 40px;
+        margin-left: 10px;
+    }
+    & .pos17 {
+        width: 30px;
+        margin-left: 10px;
+    }
+    & .pos11, & .pos16 {
+        width: 75px;
+        margin-left: 10px;
+    }
+    
+    
+    // .pos0 {
+    //     width: 440px;
+    //     margin-left: 40px;
+    // }
+    // .pos1 {
+    //     width: 60px;
+    //     margin-left: 20px;
+    // }
+    // .pos2 {
+    //     width: 200px;
+    //     margin-left: 20px;
+    // }
+    // .pos3 {
+    //     width: 120px;
+    //     margin-left: 20px;
+    // }
+    // .pos4 {
+    //     width: 60px;
+    //     margin-left: 20px;
+    // }
+    // .pos5 {
+    //     width: 150px;
+    //     margin-left: 20px;
+    // }
+}
+// .material-application-layout {
+//     position: relative;
+//     width: 100%;
+//     .pos0 {
+//         width: 230px;
+//         margin-left: 20px;
+//     }
+//     .pos1 {
+//         width: 440px;
+//         margin-left: 20px;
+//     }
+//     .pos2 {
+//         width: 300px;
+//         margin-left: 20px;
+//     }
+//     .pos3 {
+//         width: 150px;
+//         margin-left: 20px;   
+//     }
+// }
+
+// .material-volunteer-layout {
+//     position: relative;
+//     width: 100%;
+//     .pos0 {
+//         width: 250px;
+//         margin-left: 100px;
+//     }
+//     .pos1 {
+//         width: 290px;
+//         margin-left: 20px;
+//     }
+//     .pos2 {
+//         width: 120px;
+//         margin-left: 20px;
+//     }
+//     .pos3 {
+//         width: 120px;
+//         margin-left: 20px;   
+//     }
+//     .pos4 {
+//         width: 220px;
+//         margin-left: 20px;
+//     }
+// }
+
+// .material-volunteer-section-layout {
+//     position: relative;
+//     width: 100%;
+//     .pos0 {
+//         width: 40px;
+//         margin-left: 0px;
+//     }
+//     .pos1 {
+//         width: 230px;
+//         margin-left: 10px;
+//     }
+//     .pos2 {
+//         width: 250px;
+//         margin-left: 20px;
+//     }
+//     .pos3 {
+//         width: 200px;
+//         margin-left: 20px;   
+//     }
+// }
+
+// .material-rating-section-layout {
+//     position: relative;
+//     width: 100%;
+//     .pos0 {
+//         width: 150px;
+//         margin-left: 19px;
+//     }
+//     .pos1 {
+//         width: 150px;
+//         margin-left: 20px;
+//     }
+//     .pos2 {
+//         width: 440px;
+//         margin-left: 20px;
+//     }
+// }
+
+// .material-feedback-section-layout, .material-report-section-layout {
+//     position: relative;
+//     width: 100%;
+//     .pos0 {
+//         width: 230px;
+//         margin-left: 0px;
+//     }
+//     .pos1 {
+//         width: 200px;
+//         margin-left: 20px;
+//     }
+//     .pos2 {
+//         width: 310px;
+//         margin-left: 20px;
+//     }
+// }
+.card-user-section-layout {
+    position: relative;
+    width: 100%;
+    .pos0 {
+        width: 60px;
+        margin-left: 10px;
+    }
+    .pos1 {
+        width: 100%;            // flex: 1
+        margin-left: 10px;
+    }
+    .pos2 {
+        width: 30px;
+        margin-left: 10px;
+    }
+}
+
+.material-feed-section-layout, .material-story-section-layout {
+    position: relative;
+    width: 100%;
+    .pos0 {
+        width: 20px;
+        margin-left: 9px;
+    }
+    .pos1 {
+        // width: calc(100% - 29px - 180px - 50px);
+        width: 100%;
+        flex: 1;
+        margin-left: 10px;
+    }
+    .pos2 {
+        width: 150px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+}
+.material-album-section-layout {
+    position: relative;
+    width: 100%;
+    .pos0 {
+        width: 15px;
+        margin-left: 19px;
+    }
+    .pos1 {
+        width: 230px;
+        margin-left: 15px;
+    }
+    .pos2 {
+        margin-left: 20px;
+        width: 269px;                // TODO: flex 1 not working. check it
+    }
+}
+
+.line-client-section-layout {
+    position: relative;
+    width: 100%;
+    .pos0 {
+        width: 40px;
+        margin-left: 19px;
+    }
+    .pos1 {
+        width: 320px;
+        margin-left: 20px;
+    }
+    .pos2 {
+        width: 380px;
+        margin-left: 20px;
+    }
+}
+.line-executor-section-layout {
+    position: relative;
+    width: 100%;
+    .pos0 {
+        width: 40px;
+        margin-left: 19px;
+    }
+    .pos1 {
+        width: 320px;
+        margin-left: 20px;
+    }
+    .pos2, .pos3 {
+        width: 180px;
+        margin-left: 20px;
+    }
+}
+.line-promocode-section-layout, .line-feedback-section-layout {
+    position: relative;
+    width: 100%;
+    display: flex;
+    .pos0 {
+        margin-left: 19px;
+        flex: 1;
+    }
+    .pos1 {
+        flex: 1;
+        margin-left: 20px;
+        margin-right: 19px;
+    }
+}
+.line-cancelation-section-layout, .line-application-section-layout {
+    position: relative;
+    width: 100%;
+    display: flex;
+    .pos0 {
+        margin-left: 19px;
+        flex: 1;
+    }
+    .pos1 {
+        flex: 1;
+        margin-left: 20px;
+    }
+    .pos2 {
+        flex: 2;
+        margin-left: 20px;
+        margin-right: 19px;
+    }
+}
+.line-photosession-section-layout {
+    position: relative;
+    width: 100%;
+    display: flex;
+    .pos0 {
+        margin-left: 21px;
+        flex: 1;
+    }
+    .pos1 {
+        flex: 1;
+        margin-left: 20px;
+    }
+    .pos1 {
+        flex: 1;
+        margin-left: 20px;
+        margin-right: 19px;
+    }
+}
+// .material-list {
+//     .material-line__application:first-child .material-line__application-inner,
+//     .material-line__volunteer:first-child .material-line__volunteer-inner {
+//         border-top: 1px solid $grey10;
+//     }
+// }

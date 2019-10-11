@@ -1,0 +1,140 @@
+@import "~styles/variables.scss";
+
+//buttons
+.btn-black {
+    cursor: pointer;
+    background-color: $black;
+    color: $white;
+    &:hover {
+        color: $grey33;
+    }
+    &:active {
+        background-color: $black-highlight;
+        color: $white;
+    }
+}
+  
+.btn-blue {
+    cursor: pointer;
+    background-color: $blue;
+    color: $white;
+    &:hover {
+        background-color: $blue-highlight;
+    }
+    &:active {
+        background-color: $blue-dark;
+    }
+}
+
+.btn-cyan {
+    cursor: pointer;
+    background-color: $cyan-5;
+    color: $cyan-30;
+    border: 1px solid $cyan-10;
+    &:hover {
+        background-color: $cyan-10;
+    }
+    &:active {
+        background-color: darken($cyan-10, 3);
+    }
+}
+
+.btn-green {
+    cursor: pointer;
+    background-color: $green;
+    color: $white;
+    &:hover {
+        background-color: $green-highlight;
+    }
+    &:active {
+        background-color: $green-dark;
+    }
+}
+
+.btn-red {
+    cursor: pointer;
+    background-color: $red;
+    color: $white;
+    &:hover {
+        background-color: lighten($red, .5);
+    }
+    &:active {
+        background-color: darken($red, .5);
+    }
+}
+
+.btn-grey {
+    cursor: pointer;
+    color: $grey50;
+    border: 1px solid $grey33;
+    background-color: transparent;
+    &:hover {
+        color: $black;
+        border: 1px solid $grey50;
+    }
+    &:active {
+        color: $black;
+        background-color: $grey10;
+        border: 1px solid $grey10;
+    }
+}
+
+.btn-white {
+    cursor: pointer;
+    color: $black;
+    background-color: $white;
+    border: 1px solid $white;
+    &:hover {
+        color: $black-dark;
+        border: 1px solid $grey50;
+    }
+    &:active {
+        color: $black-dark;
+        background-color: $grey10;
+        border: 1px solid $grey10;
+    }
+}
+
+.btn-white-border {
+    cursor: pointer;
+    color: $black;;
+    background-color: $white;
+    border: 1px solid $grey10;
+    &:hover {
+        color: $black-dark;
+        border: 1px solid $grey50;
+    }
+    &:active {
+        color: $black-dark;
+        background-color: $grey10;
+        border: 1px solid $grey10;
+    }
+}
+
+.btn-text {
+    position: relative;
+    color: $grey50;
+    border-bottom: 1px solid $grey33;
+    cursor: pointer;
+    -webkit-user-select: none;
+    display: inline-block;
+    &:hover {
+        border-bottom: 1px solid $black;
+        color: $black;
+    }
+}
+.language-button {
+    background-color: $grey33;
+    color: $white;
+    font-size: 10px;
+    line-height: 13px;
+    padding-top: 2px;
+    width: 20px;
+    height: 14px;
+    text-align: center;
+    -webkit-user-select: none;
+    cursor: pointer;
+    &:hover {
+        background-color: $grey50;
+    }
+}
