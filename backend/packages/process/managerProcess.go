@@ -13,6 +13,8 @@ import (
 	"sync"
 	"syscall"
 	"time"
+
+	"path/filepath"
 )
 
 // GetProcessRunningStatus return status process in system by PID
@@ -126,9 +128,11 @@ func deleteFile(fullPath string) error {
 
 // StartScripts function start in goroutine shell script
 func StartScripts(text string) (pCmd *exec.Cmd, err error) {
-	dir := "/home/andrey/Документы/Andrgit/Study/Golang/Operations-Manager/backend/src/tmpScripts/"
+
+	dir := "./src/tmpScripts/"
 	path := "script__" + time.Now().String()
-	fullPath := fmt.Sprintf("%x", md5.Sum([]byte(dir+path)))
+	log.Println(filepath.Join(dir, path))
+	fullPath := filepath.Join(dir, fmt.Sprintf("%x", md5.Sum([]byte(path))))
 	err = saveFile(fullPath, []byte(text))
 	if err != nil {
 		return nil, err
